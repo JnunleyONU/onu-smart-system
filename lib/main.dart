@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 void main() {
   runApp(const InspirationApp());
 }
@@ -76,7 +76,7 @@ class MainPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('SMART System Control'),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -94,7 +94,7 @@ class MainPage extends StatelessWidget {
 class LargeButton extends StatelessWidget {
   final String text;
 
-  LargeButton(this.text, {super.key});
+  const LargeButton(this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {
