@@ -3,8 +3,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 
-class fountainHome extends StatelessWidget {
-  const fountainHome({super.key});
+class FountainHome extends StatelessWidget {
+  const FountainHome({super.key});
 
   @override
   Widget build(BuildContext context) {
