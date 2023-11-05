@@ -1,6 +1,9 @@
 # onu_smart
 
-A new Flutter project.
+ONU app for:
+1. Controlling the fountain of inspiration
+2. Remote starting 3d prints
+3. Scheduling Tours
 
 ## Getting Started
 
