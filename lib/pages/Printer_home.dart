@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
-class FountainHome extends StatelessWidget {
-  const FountainHome({super.key});
+class PrinterHome extends StatelessWidget{
+  const PrinterHome ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,41 +16,29 @@ class FountainHome extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [ElevatedButton(
               onPressed: () {
-                makePink('pink');
+                //Start print function code
               },
               style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange, // Set the background color to orange
               padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
               onPrimary: Colors.black, // Set the font color to black
             ),
-              child: const Text('Pink'),
+              child: const Text('Start Print'),
             ),
             ElevatedButton(
               onPressed: () {
-                makeNormal('Normal');
+                //Stop print function code
               },
               style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange, // Set the background color to orange
               padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
               onPrimary: Colors.black, // Set the font color to black
             ),
-              child: const Text('normal'),
+              child: const Text('Stop Print'),
             ),
           ],
         ),
       ),
     );
   }
-}
-
-Future<http.Response> makePink(String title) {
-  return http.get(
-    Uri.parse('http://jlk-statue.ad.onu.edu/pink'),
-  );
-}
-
-Future<http.Response> makeNormal(String title) {
-  return http.get(
-    Uri.parse('http://jlk-statue.ad.onu.edu/normal'),
-  );
 }
