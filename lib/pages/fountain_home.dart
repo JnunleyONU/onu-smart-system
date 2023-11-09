@@ -14,14 +14,15 @@ class FountainHome extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [ElevatedButton(
+          children: [
+            
+            ElevatedButton(
               onPressed: () {
                 changemode('pink');
               },
               style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange, // Set the background color to orange
-              padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
-              onPrimary: Colors.black, // Set the font color to black
+              backgroundColor: Colors.orange, // Set the background color to orange              
+              foregroundColor: Colors.black, // Set the font color to black
             ),
               child: const Text('Pink'),
             ),
@@ -31,8 +32,7 @@ class FountainHome extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange, // Set the background color to orange
-              padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
-              onPrimary: Colors.black, // Set the font color to black
+              foregroundColor: Colors.black, // Set the font color to black
             ),
               child: const Text('normal'),
             ),
@@ -42,8 +42,7 @@ class FountainHome extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange, // Set the background color to orange
-              padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
-              onPrimary: Colors.black, // Set the font color to black
+              foregroundColor: Colors.black, // Set the font color to black
             ),
               child: const Text('Christmas'),
             ),
@@ -53,8 +52,7 @@ class FountainHome extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange, // Set the background color to orange
-              padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
-              onPrimary: Colors.black, // Set the font color to black
+              foregroundColor: Colors.black, // Set the font color to black
             ),
               child: const Text('Blue'),
             ),
@@ -64,11 +62,10 @@ class FountainHome extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange, // Set the background color to orange
-              padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
-              onPrimary: Colors.black, // Set the font color to black
+              foregroundColor: Colors.black, // Set the font color to black
             ),
               child: const Text('Off'),
-            ),
+            ),            
           ],
         ),
       ),
