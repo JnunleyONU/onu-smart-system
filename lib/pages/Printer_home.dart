@@ -9,7 +9,7 @@ class PrinterHome extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SMART System Control'),
+        title: const Text('Smart JLK'),
       ),
       body: Center(
         child: Column(
@@ -20,7 +20,7 @@ class PrinterHome extends StatelessWidget{
               },
               style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange, // Set the background color to orange
-              padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
+              // padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
               onPrimary: Colors.black, // Set the font color to black
             ),
               child: const Text('Start Print'),
@@ -31,10 +31,21 @@ class PrinterHome extends StatelessWidget{
               },
               style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange, // Set the background color to orange
-              padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
+              // padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
               onPrimary: Colors.black, // Set the font color to black
             ),
               child: const Text('Stop Print'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                //Stop print function code
+              },
+              style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.orange, // Set the background color to orange
+              // padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
+              onPrimary: Colors.black, // Set the font color to black
+            ),
+              child: const Text('Monitor'),
             ),
           ],
         ),
