@@ -31,29 +31,15 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         title: const Text('Launch'),
+        
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                ),
-              ),
-            ),
             ElevatedButton(
               onPressed: () {
                 // Perform login logic here
@@ -64,6 +50,10 @@ class LoginPage extends StatelessWidget {
                   ),
                 );
               },
+              style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.orange, // Set the background color to orange
+              foregroundColor: Colors.black, // Set the font color to black
+            ),
               child: const Text('Login'),
             ),
           ],
@@ -80,7 +70,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SMART System Control'),
+        title: const Text('SMART JLK'),
       ),
       body: Center(
         child: Column(
