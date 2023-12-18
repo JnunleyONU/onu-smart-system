@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:onu_smart/pages/Options_Home.dart';
 import 'package:onu_smart/pages/Printer_home.dart';
 import 'package:onu_smart/pages/Tour_home.dart';
 import 'package:onu_smart/pages/fountain_home.dart';
+import 'package:onu_smart/pages/options.dart';
 import 'package:onu_smart/widgets/default_banner.dart';
 
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onu_smart/widgets/default_banner.dart';
-import 'Home.dart';
+import 'home.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

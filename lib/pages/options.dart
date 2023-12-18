@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:onu_smart/constants.dart';
-import 'dart:convert';
 
 import 'package:onu_smart/widgets/default_banner.dart';
 

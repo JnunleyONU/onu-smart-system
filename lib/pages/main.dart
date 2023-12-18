@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onu_smart/pages/Login_Page.dart';
+import 'package:onu_smart/pages/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '../options/firebase_options.dart';
 
@@ -23,7 +23,6 @@ class InspirationApp extends StatelessWidget {
     return MaterialApp(
       home: const LoginPage(),
       theme: ThemeData(
-        primaryColor: Color.fromARGB(255, 19, 24, 100),
         scaffoldBackgroundColor: Color.fromARGB(255, 0, 0, 0),
       ),
     );
