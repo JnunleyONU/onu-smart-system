@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:onu_smart/widgets/default_banner.dart';
 
 
 class FountainHome extends StatelessWidget {
@@ -8,9 +9,7 @@ class FountainHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('SMART System Control'),
-      ),
+      appBar: defaultbanner(context, "Fountain Control"),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

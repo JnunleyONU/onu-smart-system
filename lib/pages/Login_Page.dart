@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-
 import 'package:onu_smart/widgets/default_banner.dart';
+import 'Home.dart';
 
-class TourHome extends StatelessWidget{
-  const TourHome ({super.key});
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
 
-   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: defaultbanner(context, "Smart Tour"),
+      
+      appBar: defaultbanner(context, "Login"),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
               onPressed: () {
-                //Any tour function
+                // Perform login logic here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MainPage(),
+                  ),
+                );
               },
               style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange, // Set the background color to orange
-              padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
-              onPrimary: Colors.black, // Set the font color to black
+              foregroundColor: Colors.black, // Set the font color to black
             ),
-              child: const Text('Information'),
+              child: const Text('Login'),
             ),
           ],
         ),
@@ -32,3 +36,4 @@ class TourHome extends StatelessWidget{
     );
   }
 }
+

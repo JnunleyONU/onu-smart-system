@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:onu_smart/constants.dart';
 import 'dart:convert';
+
+import 'package:onu_smart/widgets/default_banner.dart';
 
 class OptionsHome extends StatelessWidget{
   const OptionsHome ({super.key});
@@ -8,9 +11,7 @@ class OptionsHome extends StatelessWidget{
    @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('SMART System Control'),
-      ),
+      appBar: defaultbanner(context, "Option Page"),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -20,7 +21,7 @@ class OptionsHome extends StatelessWidget{
                 //Any options function
               },
               style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange, // Set the background color to orange
+              backgroundColor: onuOrange, // Set the background color to orange
               padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
               onPrimary: Colors.black, // Set the font color to black
             ),

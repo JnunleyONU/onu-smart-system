@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:onu_smart/widgets/default_banner.dart';
+
 class PrinterHome extends StatelessWidget{
   const PrinterHome ({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Smart JLK'),
-      ),
+      appBar: defaultbanner(context, "Smart Printing"),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
