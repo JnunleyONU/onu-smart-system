@@ -3,11 +3,19 @@ import 'package:onu_smart/pages/Options_Home.dart';
 import 'package:onu_smart/pages/Printer_home.dart';
 import 'package:onu_smart/pages/Tour_home.dart';
 import 'package:onu_smart/pages/fountain_home.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+
+// void main() {
+//   runApp(const InspirationApp());
+// }
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const InspirationApp());
 }
-
 
 
 class InspirationApp extends StatelessWidget {

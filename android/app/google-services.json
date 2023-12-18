@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "548821198340",
+    "project_id": "onu-smart-app-5e37f",
+    "storage_bucket": "onu-smart-app-5e37f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:548821198340:android:e181c196185ebf80063751",
+        "android_client_info": {
+          "package_name": "com.example.onu_smart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMhHDUh-EuxKUamoabDTtxvrU6P-BJgMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
