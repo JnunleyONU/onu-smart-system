@@ -13,7 +13,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: defaultbanner(context, "Home"),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -31,7 +31,7 @@ class MainPage extends StatelessWidget {
 class FountainLargeButton extends StatelessWidget {
   final String text;
 
-  FountainLargeButton(this.text, {super.key});
+  const FountainLargeButton(this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class FountainLargeButton extends StatelessWidget {
 class PrinterLargeButton extends StatelessWidget {
   final String text;
 
-  PrinterLargeButton(this.text, {super.key});
+  const PrinterLargeButton(this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +105,7 @@ class PrinterLargeButton extends StatelessWidget {
 class TourLargeButton extends StatelessWidget {
   final String text;
 
-  TourLargeButton(this.text, {super.key});
+  const TourLargeButton(this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +141,7 @@ class TourLargeButton extends StatelessWidget {
 class OptionsLargeButton extends StatelessWidget {
   final String text;
 
-  OptionsLargeButton(this.text, {super.key});
+  const OptionsLargeButton(this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {

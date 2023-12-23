@@ -16,9 +16,7 @@ class PrinterHome extends StatelessWidget{
                 //Start print function code
               },
               style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange, // Set the background color to orange
-              // padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
-              onPrimary: Colors.black, // Set the font color to black
+              foregroundColor: Colors.black, backgroundColor: Colors.orange, // Set the font color to black
             ),
               child: const Text('Start Print'),
             ),
@@ -27,9 +25,7 @@ class PrinterHome extends StatelessWidget{
                 //Stop print function code
               },
               style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange, // Set the background color to orange
-              // padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
-              onPrimary: Colors.black, // Set the font color to black
+              foregroundColor: Colors.black, backgroundColor: Colors.orange, // Set the font color to black
             ),
               child: const Text('Stop Print'),
             ),
@@ -38,9 +34,7 @@ class PrinterHome extends StatelessWidget{
                 //Stop print function code
               },
               style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange, // Set the background color to orange
-              // padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
-              onPrimary: Colors.black, // Set the font color to black
+              foregroundColor: Colors.black, backgroundColor: Colors.orange, // Set the font color to black
             ),
               child: const Text('Monitor'),
             ),

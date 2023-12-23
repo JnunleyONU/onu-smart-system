@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:onu_smart/constants.dart';
 import 'package:onu_smart/widgets/default_banner.dart';
 
 
@@ -20,7 +21,7 @@ class FountainHome extends StatelessWidget {
                 changemode('pink');
               },
               style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange, // Set the background color to orange              
+              backgroundColor: onuOrange, // Set the background color to orange              
               foregroundColor: Colors.black, // Set the font color to black
             ),
               child: const Text('Pink'),

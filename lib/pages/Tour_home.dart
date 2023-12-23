@@ -19,7 +19,7 @@ class TourHome extends StatelessWidget{
               },
               style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange, // Set the background color to orange
-              padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
+              padding: const EdgeInsets.all(16), // Set 16 pixels of padding on all sides
             ),
               child: const Text('Information'),
             ),

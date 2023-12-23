@@ -19,9 +19,8 @@ class OptionsHome extends StatelessWidget{
                 //Any options function
               },
               style: ElevatedButton.styleFrom(
-              backgroundColor: onuOrange, // Set the background color to orange
-              padding: EdgeInsets.all(16), // Set 16 pixels of padding on all sides
-              onPrimary: Colors.black, // Set the font color to black
+              foregroundColor: Colors.black, backgroundColor: onuOrange, // Set the background color to orange
+              padding: const EdgeInsets.all(16), // Set the font color to black
             ),
               child: const Text('Language'),
             ),

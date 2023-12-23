@@ -12,7 +12,20 @@
           "package_name": "com.example.onu_smart"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "548821198340-ghkbgg4hvfup383v4vhomk81pm9b6t09.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.onu_smart",
+            "certificate_hash": "87ced6c22a34689062d9d55bb86f0177c937ac73"
+          }
+        },
+        {
+          "client_id": "548821198340-5o9vumn373bccb3npk1j9fvtpppts0tc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAMhHDUh-EuxKUamoabDTtxvrU6P-BJgMo"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "548821198340-5o9vumn373bccb3npk1j9fvtpppts0tc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "548821198340-2kooavrchsncn8e71jpujrnfud0pvb24.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.onuSmart.RunnerTests"
+              }
+            }
+          ]
         }
       }
     }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:onu_smart/pages/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
-import '../options/firebase_options.dart';
-
+import 'options/firebase_options.dart';
 
 // void main() {
 //   runApp(const InspirationApp());
@@ -14,7 +13,6 @@ Future<void> main() async {
   runApp(const InspirationApp());
 }
 
-
 class InspirationApp extends StatelessWidget {
   const InspirationApp({super.key});
 
@@ -23,7 +21,7 @@ class InspirationApp extends StatelessWidget {
     return MaterialApp(
       home: const LoginPage(),
       theme: ThemeData(
-        scaffoldBackgroundColor: Color.fromARGB(255, 0, 0, 0),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 0, 0, 0),
       ),
     );
   }
