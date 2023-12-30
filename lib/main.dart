@@ -1,22 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:onu_smart/pages/Home.dart';
+import 'package:onu_smart/pages/admin_home_page.dart';
 import 'package:onu_smart/pages/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'options/firebase_options.dart';
 
-// void main() {
-//   runApp(const InspirationApp());
-// }
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const InspirationApp());
+  runApp(const Main());
 }
 
-class InspirationApp extends StatelessWidget {
-  const InspirationApp({super.key});
+class Main extends StatelessWidget {
+  const Main({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +30,7 @@ class InspirationApp extends StatelessWidget {
               if (snapshot.data == null) {
                 return const LoginPage();
               } else {
-                return const HomePage();
+                return const AdminHomePage();
               }
             } else {
               return const LoginPage();

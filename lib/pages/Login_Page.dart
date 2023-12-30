@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:onu_smart/pages/Home.dart';
+import 'package:onu_smart/pages/admin_home_page.dart';
 import 'package:onu_smart/widgets/default_banner.dart';
 
 class LoginPage extends StatelessWidget {
@@ -21,7 +21,7 @@ class LoginPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const HomePage(),
+                    builder: (context) => const AdminHomePage(),
                   ),
                 );
               },
