@@ -104,7 +104,7 @@ class HomePageButtonWidget extends StatelessWidget {
   }
 }
 
-AppBar generalAppBar(String headerText) {
+AppBar generalAppBar(String headerText, [double? fontSize]) {
   return AppBar(
     toolbarHeight: 80,
     elevation: 0.0,
@@ -114,7 +114,7 @@ AppBar generalAppBar(String headerText) {
         Text(
           headerText, // Insert Username
           style: GoogleFonts.amiriQuran(
-            fontSize: 60,
+            fontSize: fontSize ?? 60,
           ),
         ),
         const Padding(padding: EdgeInsets.all(10))
