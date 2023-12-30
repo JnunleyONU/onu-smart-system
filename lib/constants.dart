@@ -6,34 +6,35 @@ import 'package:onu_smart/pages/printer_home.dart';
 import 'package:onu_smart/pages/tour_home.dart';
 
 const onuOrange = Color.fromARGB(255, 252, 104, 6);
+String? userName = '';
 
 BottomNavigationBar bottomNavigation() {
   return BottomNavigationBar(
     items: const <BottomNavigationBarItem>[
       BottomNavigationBarItem(
         icon: Icon(
-          Icons.home,
+          Icons.lightbulb_outline,
           color: Colors.black,
         ),
         label: "",
       ),
       BottomNavigationBarItem(
         icon: Icon(
-          Icons.phone,
+          Icons.print,
           color: Colors.black,
         ),
         label: "",
       ),
       BottomNavigationBarItem(
         icon: Icon(
-          Icons.mail,
+          Icons.emoji_people_rounded,
           color: Colors.black,
         ),
         label: "",
       ),
       BottomNavigationBarItem(
         icon: Icon(
-          Icons.person,
+          Icons.settings_outlined,
           color: Colors.black,
         ),
         label: "",
@@ -114,7 +115,7 @@ AppBar generalAppBar(String headerText, [double? fontSize]) {
         Text(
           headerText, // Insert Username
           style: GoogleFonts.amiriQuran(
-            fontSize: fontSize ?? 60,
+            fontSize: fontSize ?? 40,
           ),
         ),
         const Padding(padding: EdgeInsets.all(10))

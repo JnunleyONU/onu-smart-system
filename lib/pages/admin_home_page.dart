@@ -12,7 +12,7 @@ class AdminHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: onuOrange,
-      appBar: generalAppBar("Hello"),
+      appBar: generalAppBar("Hello $userName"),
       body: Container(
           height: 800,
           width: double.infinity,

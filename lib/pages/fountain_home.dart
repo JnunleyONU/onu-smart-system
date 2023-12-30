@@ -83,6 +83,7 @@ class FountainHome extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: bottomNavigation(),
     );
   }
 }
