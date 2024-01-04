@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:onu_smart/constants.dart';
 import 'package:onu_smart/pages/read_examples.dart';
+import 'package:onu_smart/pages/tour_groups_page.dart';
 import 'package:onu_smart/pages/write_examples.dart';
 
 class TourHome extends StatelessWidget {
@@ -28,7 +29,11 @@ class TourHome extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  //Any tour function
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const TourGroupsPage(),
+                      ));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor:

@@ -4,6 +4,20 @@ import 'package:google_fonts/google_fonts.dart';
 const onuOrange = Color.fromARGB(255, 252, 104, 6);
 const String excelRoot = '/1eBfu_F_M6x46hjeJrIZj84gxWmCOHjXrLA6r0Xl3Als';
 String? userName = '';
+var allFacultyMembers = {
+  "Ahmed Ammars": "ECCS",
+  "Ahmed Oun": "ECCS",
+  "Ajmal Khan": "ECCS",
+  "Enass Hriba": "ECCS",
+  "Farha Jahan": "ECCS",
+  "Firas Hassan": "ECCS",
+  "Heath LeBlanc": "ECCS",
+  "Ian Kropp": "ECCS",
+  "John Estell": "ECCS",
+  "Khalid Al-Olimat": "ECCS",
+  "Nancy Stuart": "ECCS",
+  "Stephany Coffman-Wolph": "ECCS"
+};
 
 BottomNavigationBar bottomNavigation() {
   return BottomNavigationBar(

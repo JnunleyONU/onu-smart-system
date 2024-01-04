@@ -3,7 +3,7 @@ import 'package:onu_smart/constants.dart';
 import 'package:onu_smart/pages/printer_home.dart';
 import 'package:onu_smart/pages/tour_home.dart';
 import 'package:onu_smart/pages/fountain_home.dart';
-import 'package:onu_smart/pages/options_page.dart';
+import 'package:onu_smart/pages/options_home.dart';
 
 class AdminHomePage extends StatelessWidget {
   const AdminHomePage({super.key});

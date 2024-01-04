@@ -36,7 +36,8 @@ class _WriteExamplesState extends State<WriteExamples> {
                   // }).then((value) => print("names have been written"));
 
                   // Setting specificied child
-                  await namesRef.child('Country').set('test');
+                  // await namesRef.child('this').set('test');
+                  await namesRef.set({allFacultyMembers});
                 } catch (e) {
                   print("ERROR on write");
                 }
