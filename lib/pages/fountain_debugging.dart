@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:onu_smart/constants.dart';
-import 'package:onu_smart/pages/fountain_debugging.dart';
-import 'package:onu_smart/widgets/default_banner.dart';
 
-class FountainHome extends StatelessWidget {
-  const FountainHome({super.key});
+class FountainDebugging extends StatefulWidget {
+  const FountainDebugging({super.key});
+
+  @override
+  State<FountainDebugging> createState() => _FountainDebuggingState();
+}
+
+class _FountainDebuggingState extends State<FountainDebugging> {
+  int row = -1;
+  int column = 0;
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -26,29 +37,42 @@ class FountainHome extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text("Row: $row  Column: $column"),
+
               ElevatedButton(
                 onPressed: () {
-                  changemode('pink');
+                  setState(() {
+                    row = -1;
+                    column = 0;
+                  });
+
+                  changemode('off');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor:
                       onuOrange, // Set the background color to orange
                   foregroundColor: Colors.black, // Set the font color to black
                 ),
-                child: const Text('Pink'),
+                child: const Text('Start: Reset'),
               ),
               ElevatedButton(
                 onPressed: () {
-                  changemode('normal');
+                  setState(() {
+                    row += 1;
+                  });
+                  changemode('pink');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: onuOrange,
                   foregroundColor: Colors.black, // Set the font color to black
                 ),
-                child: const Text('normal'),
+                child: const Text('Start: Increase Row'),
               ),
               ElevatedButton(
                 onPressed: () {
+                  setState(() {
+                    column += 1;
+                  });
                   changemode('christmas');
                 },
                 style: ElevatedButton.styleFrom(
@@ -56,7 +80,41 @@ class FountainHome extends StatelessWidget {
                       onuOrange, // Set the background color to orange
                   foregroundColor: Colors.black, // Set the font color to black
                 ),
-                child: const Text('Christmas'),
+                child: const Text('Increase column'),
+              ),
+
+              // ElevatedButton(
+              //   onPressed: () {
+              //     changemode('bluering');
+              //   },
+              //   style: ElevatedButton.styleFrom(
+              //     backgroundColor:
+              //         onuOrange, // Set the background color to orange
+              //     foregroundColor: Colors.black, // Set the font color to black
+              //   ),
+              //   child: const Text('Blue'),
+              // ),
+              ElevatedButton(
+                onPressed: () {
+                  changemode('normal');
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      onuOrange, // Set the background color to orange
+                  foregroundColor: Colors.black, // Set the font color to black
+                ),
+                child: const Text('Normal'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  changemode('rainbow');
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      onuOrange, // Set the background color to orange
+                  foregroundColor: Colors.black, // Set the font color to black
+                ),
+                child: const Text('MuxA'),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -67,33 +125,18 @@ class FountainHome extends StatelessWidget {
                       onuOrange, // Set the background color to orange
                   foregroundColor: Colors.black, // Set the font color to black
                 ),
-                child: const Text('Blue'),
+                child: const Text('MuxB'),
               ),
               ElevatedButton(
                 onPressed: () {
-                  changemode('off');
+                  changemode('test');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor:
                       onuOrange, // Set the background color to orange
                   foregroundColor: Colors.black, // Set the font color to black
                 ),
-                child: const Text('Off'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const FountainDebugging(),
-                      ));
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      onuOrange, // Set the background color to orange
-                  foregroundColor: Colors.black, // Set the font color to black
-                ),
-                child: const Text('Debug Screen'),
+                child: Text('Turn ON Ring'),
               ),
             ],
           ),
