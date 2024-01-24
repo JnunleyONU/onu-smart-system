@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:onu_smart/constants.dart';
-import 'package:onu_smart/widgets/default_banner.dart';
 
 class PrinterHome extends StatelessWidget {
   const PrinterHome({super.key});

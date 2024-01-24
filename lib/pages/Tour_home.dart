@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onu_smart/constants.dart';
 
-import 'package:onu_smart/widgets/default_banner.dart';
 
 class TourHome extends StatelessWidget {
   const TourHome({super.key});
