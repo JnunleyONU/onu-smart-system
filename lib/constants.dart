@@ -1,12 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:onu_smart/pages/fountain_home.dart';
-import 'package:onu_smart/pages/options.dart';
-import 'package:onu_smart/pages/printer_home.dart';
-import 'package:onu_smart/pages/tour_home.dart';
 
 const onuOrange = Color.fromARGB(255, 252, 104, 6);
+const String excelRoot = '/1eBfu_F_M6x46hjeJrIZj84gxWmCOHjXrLA6r0Xl3Als';
 String? userName = '';
+var allFacultyMembers = {
+  "Ahmed Ammars": "ECCS",
+  "Ahmed Oun": "ECCS",
+  "Ajmal Khan": "ECCS",
+  "Enass Hriba": "ECCS",
+  "Farha Jahan": "ECCS",
+  "Firas Hassan": "ECCS",
+  "Heath LeBlanc": "ECCS",
+  "Ian Kropp": "ECCS",
+  "John Estell": "ECCS",
+  "Khalid Al-Olimat": "ECCS",
+  "Nancy Stuart": "ECCS",
+  "Stephany Coffman-Wolph": "ECCS",
+  "Bryan Boulanger": "Civil",
+  "Jill Dotson": "Civil",
+  "Todd France": "Civil",
+  "David Johnstone": "Civil",
+  "Lauren Logan": "Civil",
+  "Ramin Rabiee": "Civil",
+  "Seyed Mohmmad Seyed Ardakani": "Civil",
+  "Bob Ward": "Civil",
+  "Fan Ye": "Civil",
+  "Xiangya Cheng": "Mechanical",
+  "Abby Clark": "Mechanical",
+  "Louis DiBerardino": "Mechanical",
+  "Larry Funke": "Mechanical",
+  "Josh Gargac": "Mechanical",
+  "Blake Hylton": "Mechanical",
+  "Jed Marquart": "Mechanical",
+  "David Mikesell": "Mechanical",
+  "David Sawyers": "Mechanical",
+  "Lisa Shadle": "Mechanical",
+  "Hui Shen": "Mechanical",
+  "Scott Cottle": "ENGR",
+  "Lori Goldsmith": "Civil",
+  "Jodi Kennedy": "Civil",
+  "Laurie Laird": "Civil",
+  "Jeff Martz": "Civil",
+  "Tricia Profit": "Civil",
+  "Chris Winters": "Civil",
+  "J.D. Yoder": "Civil",
+  "Tom Zechman": "Civil",
+};
 
 BottomNavigationBar bottomNavigation() {
   return BottomNavigationBar(
@@ -41,68 +81,6 @@ BottomNavigationBar bottomNavigation() {
       ),
     ],
   );
-}
-
-class HomePageButtonWidget extends StatelessWidget {
-  const HomePageButtonWidget({
-    super.key,
-    required this.context,
-    this.fountainHome,
-    this.tourHome,
-    this.printerHome,
-    this.optionsHome,
-    required this.homeIcon,
-  });
-
-  final BuildContext context;
-  final FountainHome? fountainHome;
-  final TourHome? tourHome;
-  final PrinterHome? printerHome;
-  final OptionsHome? optionsHome;
-  final IconData homeIcon;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(top: 20, left: 10, right: 15, bottom: 0),
-      margin: const EdgeInsets.all(20),
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                if (fountainHome != null) {
-                  return const FountainHome();
-                } else if (tourHome != null) {
-                  return const TourHome();
-                } else if (printerHome != null) {
-                  return const PrinterHome();
-                } else if (optionsHome != null) {
-                  return const OptionsHome();
-                } else {
-                  return const Icon(Icons.abc);
-                }
-              },
-            ),
-          );
-        },
-        style: ElevatedButton.styleFrom(
-            fixedSize: const Size(125, 125),
-            textStyle: const TextStyle(fontSize: 50),
-            side: const BorderSide(color: onuOrange),
-            // elevation: 1.0,
-            padding: const EdgeInsets.all(2.0),
-            shape: BeveledRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0))),
-        child: Icon(
-          homeIcon,
-          color: Colors.black87,
-          size: 100,
-        ),
-      ),
-    );
-  }
 }
 
 AppBar generalAppBar(String headerText, [double? fontSize]) {
