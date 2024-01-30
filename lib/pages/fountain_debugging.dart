@@ -136,7 +136,7 @@ class _FountainDebuggingState extends State<FountainDebugging> {
                       onuOrange, // Set the background color to orange
                   foregroundColor: Colors.black, // Set the font color to black
                 ),
-                child: Text('Turn ON Ring'),
+                child: const Text('Turn ON Ring'),
               ),
             ],
           ),
