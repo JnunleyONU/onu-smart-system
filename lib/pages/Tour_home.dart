@@ -17,7 +17,7 @@ class TourHome extends StatelessWidget {
         height: 800,
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: Colors.white,
+          color: Colors.black,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
@@ -41,7 +41,7 @@ class TourHome extends StatelessWidget {
                   padding: const EdgeInsets.all(
                       16), // Set 16 pixels of padding on all sides
                 ),
-                child: const Text('Information'),
+                child: const Text('Information', style: TextStyle(color: Colors.black),),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -57,7 +57,7 @@ class TourHome extends StatelessWidget {
                   padding: const EdgeInsets.all(
                       16), // Set 16 pixels of padding on all sides
                 ),
-                child: const Text('WRITE'),
+                child: const Text('WRITE', style: TextStyle(color: Colors.black),),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -73,12 +73,13 @@ class TourHome extends StatelessWidget {
                   padding: const EdgeInsets.all(
                       16), // Set 16 pixels of padding on all sides
                 ),
-                child: const Text('Read'),
+                child: const Text('Read', style: TextStyle(color: Colors.black),),
               ),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: bottomNavigation(),
     );
   }
 }

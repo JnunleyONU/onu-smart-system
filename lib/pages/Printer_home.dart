@@ -13,7 +13,7 @@ class PrinterHome extends StatelessWidget {
         height: 800,
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: Colors.white,
+          color: Colors.black,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
@@ -57,6 +57,7 @@ class PrinterHome extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: bottomNavigation(),
     );
   }
 }

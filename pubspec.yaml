@@ -42,6 +42,13 @@ dependencies:
   google_sign_in: ^6.2.1
   google_fonts: ^6.1.0
   firebase_database: ^10.3.8
+  file_picker: ^6.1.1
+  firebase_storage: ^11.6.1
+  firebase_core_web: ^2.11.0
+  cloud_firestore_web: ^3.10.0
+  csv: ^5.1.1
+  path: ^1.8.3
+  mailer: ^6.0.1
 
 dev_dependencies:
   flutter_test:

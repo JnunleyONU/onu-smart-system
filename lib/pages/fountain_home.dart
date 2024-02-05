@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:onu_smart/constants.dart';
 import 'package:onu_smart/pages/fountain_debugging.dart';
-import 'package:onu_smart/widgets/default_banner.dart';
 
 class FountainHome extends StatelessWidget {
   const FountainHome({super.key});
@@ -16,7 +15,7 @@ class FountainHome extends StatelessWidget {
         height: 800,
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: Colors.white,
+          color: Colors.black,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),

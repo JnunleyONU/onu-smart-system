@@ -15,7 +15,7 @@ class OptionsHome extends StatelessWidget {
         height: 800,
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: Colors.white,
+          color: Colors.black,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -32,7 +32,7 @@ class OptionsHome extends StatelessWidget {
               await GoogleSignIn().signOut();
               FirebaseAuth.instance.signOut();
             },
-            child: const Text("Logout"),
+            child: const Text("Logout", style: TextStyle(color: Colors.black),),
           ),
         ),
       ),
