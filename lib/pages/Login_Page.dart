@@ -29,7 +29,7 @@ class LoginPage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor:
                     Colors.orange, // Set the background color to orange
-                foregroundColor: Colors.black, // Set the font color to black
+                foregroundColor: const Color.fromARGB(255, 255, 255, 255), // Set the font color to black
               ),
               child: const Text('Login'),
             ),
