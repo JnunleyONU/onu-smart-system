@@ -14,7 +14,8 @@ class TourGroupsPage extends StatefulWidget {
 
 class TourGroupsPageState extends State<TourGroupsPage> {
   Future<void> createStudentsFromFirebase() async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref("$excelRoot/Sheet1");
+    DatabaseReference ref =
+        FirebaseDatabase.instance.ref("$incomingStudentExcelRoot/Students");
 
     final DataSnapshot snapShot = await ref.get();
     Map<String, dynamic>? rawData = jsonDecode(jsonEncode(snapShot.value));
@@ -80,6 +81,8 @@ class TourGroupsPageState extends State<TourGroupsPage> {
         ));
   }
 
+  /// Creates string list of students from dynaminc list
+  /// For some reason list.toString prints and instance of object rather than each index as a string
   String listTheStudents(List listOfStudentsByMajor) {
     List names = [];
     for (var element in listOfStudentsByMajor) {

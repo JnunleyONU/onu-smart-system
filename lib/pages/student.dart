@@ -1,3 +1,5 @@
+// ignore_for_file: slash_for_doc_comments
+
 List masterStudentObjectList = [];
 List computerEngineeringStudents = [];
 List computerScienceStudents = [];
@@ -16,6 +18,11 @@ class Student {
   // Student.createStudents(Map<String, dynamic>? rawData, this.name, this.major, this.gender);
 }
 
+/**
+ * Takes in Raw data from the google sheet, in the form of a Map
+ * Loops through map to create a student object
+ * Pushes Object into masterStudentObjectList which contains all incomind students
+*/
 void createStudents(Map<String, dynamic>? rawStudentData) {
   masterStudentObjectList = [];
   final keys = rawStudentData?.keys;
@@ -27,7 +34,12 @@ void createStudents(Map<String, dynamic>? rawStudentData) {
   // print(masterStudentObjectList);
 }
 
-void sortStudentsByMajor(List studnetList) {
+/**
+ * Resets Student List by major
+ * Loops through studentList and access student objects major
+ * sorts accordingly
+ */
+void sortStudentsByMajor(List studentList) {
   computerEngineeringStudents = [];
   computerScienceStudents = [];
   electricalStudents = [];
@@ -35,7 +47,7 @@ void sortStudentsByMajor(List studnetList) {
   civilStudents = [];
   unsortedStudents = [];
 
-  for (var element in studnetList) {
+  for (var element in studentList) {
     switch (element.major) {
       case "computer engineering":
         computerEngineeringStudents.add(element);
