@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:onu_smart/constants.dart';
 import 'package:onu_smart/pages/fountain_debugging.dart';
-import 'package:onu_smart/widgets/default_banner.dart';
 
 class FountainHome extends StatelessWidget {
   const FountainHome({super.key});

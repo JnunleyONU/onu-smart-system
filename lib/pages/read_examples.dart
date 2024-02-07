@@ -27,22 +27,17 @@ class _ReadExamplesState extends State<ReadExamples> {
       final data = event.snapshot.value;
       setState(() {
         _displayText = "Sheet1: $data";
+        // print("test" + _displayText);
       });
     });
   }
 
-  // void _activateListeners() {
-  //   _database.child("names").onValue.listen((event) {
-  //     final String description = event.snapshot.value;
-  //     setState(() {
-  //       _displayText = 'Here are the names: $description';
-  //     });
-  //   });
-  // }
+  // Future<void> readProfileData() async {
+  //   DatabaseReference ref = FirebaseDatabase.instance.ref("$excelRoot/Sheet1");
 
-  // final String description = event.snapshot.value;
-  // setState
-  // };
+  //   final DataSnapshot snapShot = await ref.get();
+  //   rawData = jsonDecode(jsonEncode(snapShot.value));
+  //   createStudents(rawData);
   // }
 
   @override
@@ -57,7 +52,12 @@ class _ReadExamplesState extends State<ReadExamples> {
           Text(
             _displayText,
           ),
-          ElevatedButton(onPressed: () {}, child: const Text("Read Data"))
+          ElevatedButton(
+              onPressed: () {
+                // print(_displayText
+                // readProfileData();
+              },
+              child: const Text("Read Data"))
         ]),
       )),
     );

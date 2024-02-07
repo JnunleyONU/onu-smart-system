@@ -1,5 +1,9 @@
+import 'dart:convert';
+
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:onu_smart/constants.dart';
+import 'package:onu_smart/pages/student.dart';
 
 class TourGroupsPage extends StatefulWidget {
   const TourGroupsPage({super.key});
@@ -9,6 +13,14 @@ class TourGroupsPage extends StatefulWidget {
 }
 
 class TourGroupsPageState extends State<TourGroupsPage> {
+  Future<void> createStudentsFromFirebase() async {
+    DatabaseReference ref = FirebaseDatabase.instance.ref("$excelRoot/Sheet1");
+
+    final DataSnapshot snapShot = await ref.get();
+    Map<String, dynamic>? rawData = jsonDecode(jsonEncode(snapShot.value));
+    createStudents(rawData);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,62 +36,55 @@ class TourGroupsPageState extends State<TourGroupsPage> {
               topRight: Radius.circular(30),
             ),
           ),
-          child: Center(
-            // child: GridView.count(
-            //   crossAxisCount: 2,
+          child: Column(
+            children: [
+              // createTexttextfields(5),
+              const Text(textAlign: TextAlign.right, "Computer Engineering: "),
+              Text(listTheStudents(computerEngineeringStudents)),
 
-            //   children: <Widget>[
-            //     Container(
-            //         color: Colors.teal,
-            //         child: const Center(child: Text("this"))),
-            //     Container(
-            //         color: Colors.purple,
-            //         child: const Center(child: Text("this"))),
-            //     Container(
-            //         color: Colors.pink,
-            //         child: const Center(child: Text("this"))),
-            //     Container(
-            //         color: Colors.greenAccent,
-            //         child: const Center(child: Text("this"))),
-            //   ],
-            // ),
-            child: CustomScrollView(slivers: <Widget>[
-              SliverGrid(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 150.0,
-                    // mainAxisSpacing: 10.0,
-                    // crossAxisSpacing: 10.0,
-                    // childAspectRatio: 1.0,
-                  ),
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return Container(
-                        alignment: Alignment.center,
-                        color: Colors.green,
-                        child: Text('Grid Item $index'),
-                      );
-                    },
-                    childCount: 1,
-                  )),
-              SliverGrid(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200.0,
-                    mainAxisSpacing: 10.0,
-                    crossAxisSpacing: 10.0,
-                    childAspectRatio: 1.0,
-                  ),
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return Container(
-                        alignment: Alignment.center,
-                        color: Colors.red[100 * (index % 9)],
-                        child: Text('Grid Item $index'),
-                      );
-                    },
-                    childCount: 6,
-                  ))
-            ]),
+              const Text(
+                  textAlign: TextAlign.right, "Mechanical Engineering: "),
+              Text(listTheStudents(mechanicalStudents)),
+
+              const Text(textAlign: TextAlign.right, "Civil Engineering: "),
+              Text(listTheStudents(civilStudents)),
+
+              const Text(
+                  textAlign: TextAlign.right, "Electrical Engineering: "),
+              Text(listTheStudents(electricalStudents)),
+
+              const Text(textAlign: TextAlign.right, "Computer Science: "),
+              Text(listTheStudents(computerScienceStudents)),
+
+              const Text(textAlign: TextAlign.right, "UNSURE: "),
+              Text(listTheStudents(unsortedStudents)),
+
+              ElevatedButton(
+                child:
+                    const Text("Create Student Objects and dispaly by Major"),
+                onPressed: () {
+                  createStudentsFromFirebase();
+                },
+              ),
+              ElevatedButton(
+                child: const Text("Sort Students"),
+                onPressed: () {
+                  sortStudentsByMajor(masterStudentObjectList);
+                  setState(() {
+                    //You can also make changes to your state here.
+                  });
+                },
+              ),
+            ],
           ),
         ));
+  }
+
+  String listTheStudents(List listOfStudentsByMajor) {
+    List names = [];
+    for (var element in listOfStudentsByMajor) {
+      names.add(element.name);
+    }
+    return names.toString();
   }
 }
