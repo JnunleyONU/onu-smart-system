@@ -80,21 +80,6 @@ class TourGroupsPageState extends State<TourGroupsPage> {
         ));
   }
 
-  // createSortedStudentDisplay(int d) {
-  //   var textEditingControllers = <TextEditingController>[];
-
-  //   var textFields = <TextField>[];
-  //   var list = new List<int>.generate(d, (i) => i + 1);
-  //   print(list);
-
-  //   list.forEach((i) {
-  //     var textEditingController = new TextEditingController(text: "test $i");
-  //     textEditingControllers.add(textEditingController);
-  //     return textFields.add(new TextField(controller: textEditingController));
-  //   });
-  //   return Column(children: textFields);
-  // }
-
   String listTheStudents(List listOfStudentsByMajor) {
     List names = [];
     for (var element in listOfStudentsByMajor) {
