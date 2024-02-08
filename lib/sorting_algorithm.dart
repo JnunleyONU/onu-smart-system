@@ -11,6 +11,18 @@ void sortingAlgorithm() {
         if (meetsRequirements(computerEngineeringTourGuides[i])) {
           computerEngineeringTourGuides[i].studentsInTour.add(x);
         }
+      case ("electrical engineering"):
+        if (meetsRequirements(electricalTourGuides[i])) {
+          electricalTourGuides[i].studentsInTour.add(x);
+        }
+      case ("mechanical engineering"):
+        if (meetsRequirements(mechanicalTourGuides[i])) {
+          mechanicalTourGuides[i].studentsInTour.add(x);
+        }
+      case ("civil engineering"):
+        if (meetsRequirements(civilTourGuides[i])) {
+          civilTourGuides[i].studentsInTour.add(x);
+        }
     }
   }
 }

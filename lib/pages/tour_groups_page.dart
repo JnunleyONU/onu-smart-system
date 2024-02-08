@@ -99,11 +99,29 @@ class TourGroupsPageState extends State<TourGroupsPage> {
                 child: const Text("SORT"),
                 onPressed: () {
                   sortingAlgorithm();
+
                   setState(() {
                     //You can also make changes to your state here.
                   });
                 },
               ),
+              Text(
+                  textAlign: TextAlign.right,
+                  masterTourGuideObjectList[0].name.toString()),
+              Text(listTheStudentsinTours(
+                  masterTourGuideObjectList[0].studentsInTour)),
+
+              Text(
+                  textAlign: TextAlign.right,
+                  masterTourGuideObjectList[1].name.toString()),
+              Text(listTheStudentsinTours(
+                  masterTourGuideObjectList[1].studentsInTour)),
+
+              Text(
+                  textAlign: TextAlign.right,
+                  masterTourGuideObjectList[2].name.toString()),
+              Text(listTheStudentsinTours(
+                  masterTourGuideObjectList[2].studentsInTour)),
             ],
           ),
         ));
@@ -114,6 +132,14 @@ class TourGroupsPageState extends State<TourGroupsPage> {
   String listTheStudents(List listOfStudentsByMajor) {
     List names = [];
     for (var element in listOfStudentsByMajor) {
+      names.add(element.name);
+    }
+    return names.toString();
+  }
+
+  String listTheStudentsinTours(List listOfStudentsInTour) {
+    List names = [];
+    for (var element in listOfStudentsInTour) {
       names.add(element.name);
     }
     return names.toString();
