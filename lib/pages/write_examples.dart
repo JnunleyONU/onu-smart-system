@@ -3,7 +3,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:onu_smart/constants.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 
 class WriteExamples extends StatefulWidget {
@@ -64,27 +63,43 @@ class _WriteExamplesState extends State<WriteExamples> {
   }
 
   Future sendEmail() async{
-    final user = await GoogleAuthApi.signIn();
+    String username ='zkremp418@gmail.com';
+    String password ='Avbpgh5137@*';
 
-    if (user == null) return;
+    final smtpServer = gmail(username, password);
 
-    final email = user.email;
-    final auth = await user.authentication;
-    final token = auth.accessToken!;
-
-    final smtpServer = gmailSaslXoauth2(email, token);
     final message = Message()
-      ..from = Address(email, 'Zach')
-      ..recipients = ['z-krempasky@onu.edu']
-      ..subject = 'Hello'
-      ..text = 'Test email';
+      ..from = Address(username, 'Zach')
+      ..recipients.add('z-krempasky@onu.edu')
+      ..subject = 'Testing Mailer'
+      ..text = 'Hello. This is a test for dart mailer.';
 
-    try{
-      await send(message, smtpServer);
-    }on MailerException catch (e){
-      print(e);
-    }
+    var connection = PersistentConnection(smtpServer);
+
+    await connection.send(message);
+    await connection.close();
+      /*  final user = await GoogleAuthApi.signIn();
+
+      if (user == null) return;
+
+      final email = user.email;
+      final auth = await user.authentication;
+      final token = auth.accessToken!;
+
+      final smtpServer = gmailSaslXoauth2(email, token);
+      final message = Message()
+        ..from = Address(email, 'Zach')
+        ..recipients = ['z-krempasky@onu.edu']
+        ..subject = 'Hello'
+        ..text = 'Test email';
+
+      try{
+        await send(message, smtpServer);
+      }on MailerException catch (e){
+        print(e);
+      */
   }
+
 
   @override
   Widget build(BuildContext context) {

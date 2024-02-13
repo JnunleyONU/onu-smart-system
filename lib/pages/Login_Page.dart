@@ -46,14 +46,20 @@ class LoginPage extends StatelessWidget {
   }
 
   signInWithGoogle() async {
-    GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+    try {
+      GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
-    AuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+      if (googleAuth != null) {
+        AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
 
-    UserCredential userCredntial =
-        await FirebaseAuth.instance.signInWithCredential(credential);
-    userName = userCredntial.user?.displayName;
+        UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+        userName = userCredential.user?.displayName;
+      }
+    } catch (e) {
+      print("Error signing in with Google: $e");
+    }
   }
 }
