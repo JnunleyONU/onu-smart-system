@@ -1,6 +1,6 @@
 // ignore_for_file: slash_for_doc_comments
 
-List masterStudentObjectList = [];
+List masterStudentObjectList = ['', '', ''];
 List computerEngineeringStudents = [];
 List computerScienceStudents = [];
 List electricalStudents = [];

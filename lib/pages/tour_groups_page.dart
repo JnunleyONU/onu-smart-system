@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:onu_smart/constants.dart';
+import 'package:onu_smart/pages/display_sort.dart';
 import 'package:onu_smart/pages/student.dart';
 import 'package:onu_smart/pages/tour_guide.dart';
 import 'package:onu_smart/sorting_algorithm.dart';
@@ -96,32 +97,19 @@ class TourGroupsPageState extends State<TourGroupsPage> {
                 },
               ),
               ElevatedButton(
-                child: const Text("SORT"),
+                child: const Text("Display Sort"),
                 onPressed: () {
                   sortingAlgorithm();
-
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const DisplaySort(),
+                      ));
                   setState(() {
                     //You can also make changes to your state here.
                   });
                 },
               ),
-              Text(
-                  textAlign: TextAlign.right,
-                  masterTourGuideObjectList[0].name.toString()),
-              Text(listTheStudentsinTours(
-                  masterTourGuideObjectList[0].studentsInTour)),
-
-              Text(
-                  textAlign: TextAlign.right,
-                  masterTourGuideObjectList[1].name.toString()),
-              Text(listTheStudentsinTours(
-                  masterTourGuideObjectList[1].studentsInTour)),
-
-              Text(
-                  textAlign: TextAlign.right,
-                  masterTourGuideObjectList[2].name.toString()),
-              Text(listTheStudentsinTours(
-                  masterTourGuideObjectList[2].studentsInTour)),
             ],
           ),
         ));
@@ -144,4 +132,26 @@ class TourGroupsPageState extends State<TourGroupsPage> {
     }
     return names.toString();
   }
+
+  // String listFaculty(List faculty) {
+  //   Map names;
+  //   for (var element in faculty) {
+  //     names.addke;
+  //   }
+  //   return names.toString();
+  // }
+
+  List<Widget> printPairings() {
+    // return Text("hello");
+    List<Widget> facultyTextList = [];
+    for (int i = 0; i < masterTourGuideObjectList.length; i++) {
+      facultyTextList.add(Text(masterTourGuideObjectList[i].name));
+      facultyTextList.add(Text(
+          listTheStudentsinTours(masterTourGuideObjectList[i].studentsInTour)));
+    }
+    return facultyTextList;
+  }
+
+  final List<String> entries = <String>['A', 'B', 'C'];
+  final List<int> colorCodes = <int>[600, 500, 100];
 }

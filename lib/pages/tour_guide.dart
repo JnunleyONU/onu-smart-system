@@ -1,4 +1,4 @@
-List masterTourGuideObjectList = [];
+List masterTourGuideObjectList = ['', '', ''];
 List computerScienceTourGuides = [];
 List computerEngineeringTourGuides = [];
 List electricalTourGuides = [];
