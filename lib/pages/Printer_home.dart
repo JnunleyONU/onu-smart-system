@@ -1,4 +1,5 @@
 
+
 // Printer_home.dart - Written by Alexander Brown, Jared Swartz, Jamir Nunley, Zach Krempasky, Mallory Clark (IOT Titans Capstone Group)
 // Last Update 2/4/2024
 // Uses Octoprint REST Api to communicate with server, can either be connected to via domain name or hardcoded IP address
@@ -36,6 +37,7 @@
 //--------------------------Wishful Thinking ----------------------------------------------------------------------
 // Allow user to upload files from their device to start print (will most likely not happen for this project but would be cool ya know?)
 //
+
 
 
 import 'package:flutter/material.dart';

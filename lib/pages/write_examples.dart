@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:onu_smart/constants.dart';
@@ -39,7 +37,7 @@ class _WriteExamplesState extends State<WriteExamples> {
                   // await namesRef.child('this').set('test');
                   await namesRef.set({allFacultyMembers});
                 } catch (e) {
-                  print("ERROR on write");
+                  // print("ERROR on write");
                 }
               },
               child: const Text('simple set'))

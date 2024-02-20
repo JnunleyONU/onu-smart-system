@@ -1,5 +1,12 @@
+import 'dart:convert';
+
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:onu_smart/constants.dart';
+import 'package:onu_smart/pages/display_sort.dart';
+import 'package:onu_smart/pages/student.dart';
+import 'package:onu_smart/pages/tour_guide.dart';
+import 'package:onu_smart/sorting_algorithm.dart';
 
 class TourGroupsPage extends StatefulWidget {
   const TourGroupsPage({super.key});
@@ -9,6 +16,24 @@ class TourGroupsPage extends StatefulWidget {
 }
 
 class TourGroupsPageState extends State<TourGroupsPage> {
+  Future<void> createStudentsFromFirebase() async {
+    DatabaseReference ref =
+        FirebaseDatabase.instance.ref("$incomingStudentExcelRoot/Students");
+
+    final DataSnapshot snapShot = await ref.get();
+    Map<String, dynamic>? rawData = jsonDecode(jsonEncode(snapShot.value));
+    createStudents(rawData);
+  }
+
+  Future<void> createTourGuidesFromFirebase() async {
+    DatabaseReference ref =
+        FirebaseDatabase.instance.ref("$tourGuideExcelRoot/Polar Preview");
+
+    final DataSnapshot snapShot = await ref.get();
+    Map<String, dynamic>? rawData = jsonDecode(jsonEncode(snapShot.value));
+    createTourGuides(rawData);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,62 +49,109 @@ class TourGroupsPageState extends State<TourGroupsPage> {
               topRight: Radius.circular(30),
             ),
           ),
-          child: Center(
-            // child: GridView.count(
-            //   crossAxisCount: 2,
+          child: Column(
+            children: [
+              // createTexttextfields(5),
+              const Text(textAlign: TextAlign.right, "Computer Engineering: "),
+              Text(listTheStudents(computerEngineeringStudents) +
+                  listTheStudents(computerEngineeringTourGuides)),
 
-            //   children: <Widget>[
-            //     Container(
-            //         color: Colors.teal,
-            //         child: const Center(child: Text("this"))),
-            //     Container(
-            //         color: Colors.purple,
-            //         child: const Center(child: Text("this"))),
-            //     Container(
-            //         color: Colors.pink,
-            //         child: const Center(child: Text("this"))),
-            //     Container(
-            //         color: Colors.greenAccent,
-            //         child: const Center(child: Text("this"))),
-            //   ],
-            // ),
-            child: CustomScrollView(slivers: <Widget>[
-              SliverGrid(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 150.0,
-                    // mainAxisSpacing: 10.0,
-                    // crossAxisSpacing: 10.0,
-                    // childAspectRatio: 1.0,
-                  ),
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return Container(
-                        alignment: Alignment.center,
-                        color: Colors.green,
-                        child: Text('Grid Item $index'),
-                      );
-                    },
-                    childCount: 1,
-                  )),
-              SliverGrid(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200.0,
-                    mainAxisSpacing: 10.0,
-                    crossAxisSpacing: 10.0,
-                    childAspectRatio: 1.0,
-                  ),
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return Container(
-                        alignment: Alignment.center,
-                        color: Colors.red[100 * (index % 9)],
-                        child: Text('Grid Item $index'),
-                      );
-                    },
-                    childCount: 6,
-                  ))
-            ]),
+              const Text(
+                  textAlign: TextAlign.right, "Mechanical Engineering: "),
+              Text(listTheStudents(mechanicalStudents) +
+                  listTheStudents(mechanicalTourGuides)),
+
+              const Text(textAlign: TextAlign.right, "Civil Engineering: "),
+              Text(listTheStudents(civilStudents) +
+                  listTheStudents(civilTourGuides)),
+
+              const Text(
+                  textAlign: TextAlign.right, "Electrical Engineering: "),
+              Text(listTheStudents(electricalStudents) +
+                  listTheStudents(electricalTourGuides)),
+
+              const Text(textAlign: TextAlign.right, "Computer Science: "),
+              Text(listTheStudents(computerScienceStudents) +
+                  listTheStudents(computerScienceTourGuides)),
+
+              const Text(textAlign: TextAlign.right, "UNSURE: "),
+              Text(listTheStudents(unsortedStudents) +
+                  listTheStudents(unsortedTourGuides)),
+
+              ElevatedButton(
+                child:
+                    const Text("Create Student Objects and dispaly by Major"),
+                onPressed: () {
+                  createStudentsFromFirebase();
+                  createTourGuidesFromFirebase();
+                },
+              ),
+              ElevatedButton(
+                child: const Text("Sort Students"),
+                onPressed: () {
+                  sortStudentsByMajor(masterStudentObjectList);
+                  sortTourGuideByMajor(masterTourGuideObjectList);
+                  setState(() {
+                    //You can also make changes to your state here.
+                  });
+                },
+              ),
+              ElevatedButton(
+                child: const Text("Display Sort"),
+                onPressed: () {
+                  sortingAlgorithm();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const DisplaySort(),
+                      ));
+                  setState(() {
+                    //You can also make changes to your state here.
+                  });
+                },
+              ),
+            ],
           ),
         ));
   }
+
+  /// Creates string list of students from dynaminc list
+  /// For some reason list.toString prints and instance of object rather than each index as a string
+  String listTheStudents(List listOfStudentsByMajor) {
+    List names = [];
+    for (var element in listOfStudentsByMajor) {
+      names.add(element.name);
+    }
+    return names.toString();
+  }
+
+  String listTheStudentsinTours(List listOfStudentsInTour) {
+    List names = [];
+    for (var element in listOfStudentsInTour) {
+      names.add(element.name);
+    }
+    return names.toString();
+  }
+
+  // String listFaculty(List faculty) {
+  //   Map names;
+  //   for (var element in faculty) {
+  //     names.addke;
+  //   }
+  //   return names.toString();
+  // }
+
+  List<Widget> printPairings() {
+    // return Text("hello");
+    List<Widget> facultyTextList = [];
+    for (int i = 0; i < masterTourGuideObjectList.length; i++) {
+      facultyTextList.add(Text(masterTourGuideObjectList[i].name));
+      facultyTextList.add(Text(
+          listTheStudentsinTours(masterTourGuideObjectList[i].studentsInTour)));
+    }
+    return facultyTextList;
+  }
+
+  final List<String> entries = <String>['A', 'B', 'C'];
+  final List<int> colorCodes = <int>[600, 500, 100];
 }

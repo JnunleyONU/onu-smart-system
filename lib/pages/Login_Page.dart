@@ -12,34 +12,45 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: defaultbanner(context, "Login"),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                // Perform login logic here
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AdminHomePage(),
-                  ),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    Colors.orange, // Set the background color to orange
-                foregroundColor: Colors.black, // Set the font color to black
+      body: Container(
+        height: 800,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  // Perform login logic here
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AdminHomePage(),
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      Colors.orange, // Set the background color to orange
+                  foregroundColor: Colors.black, // Set the font color to black
+                ),
+                child: const Text('Login'),
               ),
-              child: const Text('Login'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                signInWithGoogle();
-              },
-              child: const Text('Login with Google'),
-            )
-          ],
+              ElevatedButton(
+                onPressed: () {
+                  signInWithGoogle();
+                },
+                child: const Text('Login with Google'),
+              )
+            ],
+          ),
         ),
       ),
     );

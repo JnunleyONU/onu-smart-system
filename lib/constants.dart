@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const onuOrange = Color.fromARGB(255, 252, 104, 6);
-const String excelRoot = '/1eBfu_F_M6x46hjeJrIZj84gxWmCOHjXrLA6r0Xl3Als';
+
+const String incomingStudentExcelRoot =
+    '/1PAi0YFcyS2w5hhOrHnyc764dhRS52XQRRdri-y-w6k4';
+
+const String tourGuideExcelRoot =
+    '/1R-c-s3CvUImFEIRGA8yY693i41TWSL6vV1GdAO5-s3E';
+
 String? userName = '';
+
 var allFacultyMembers = {
   "Ahmed Ammars": "ECCS",
   "Ahmed Oun": "ECCS",

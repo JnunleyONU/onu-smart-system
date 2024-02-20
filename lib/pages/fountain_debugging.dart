@@ -14,7 +14,6 @@ class _FountainDebuggingState extends State<FountainDebugging> {
   int column = 0;
   // @override
   // void initState() {
-  //   // TODO: implement initState
   //   super.initState();
   // }
 
@@ -136,7 +135,7 @@ class _FountainDebuggingState extends State<FountainDebugging> {
                       onuOrange, // Set the background color to orange
                   foregroundColor: Colors.black, // Set the font color to black
                 ),
-                child: Text('Turn ON Ring'),
+                child: const Text('Turn ON Ring'),
               ),
             ],
           ),

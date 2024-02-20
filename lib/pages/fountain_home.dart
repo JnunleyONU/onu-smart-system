@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:onu_smart/constants.dart';
 import 'package:onu_smart/pages/fountain_debugging.dart';
-import 'package:onu_smart/widgets/default_banner.dart';
 
 class FountainHome extends StatelessWidget {
   const FountainHome({super.key});
@@ -28,7 +27,7 @@ class FountainHome extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  changemode('pink');
+                  changemode('pinkpink');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor:
@@ -49,7 +48,7 @@ class FountainHome extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  changemode('christmas');
+                  changemode('christmaschritmas');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor:
@@ -60,14 +59,14 @@ class FountainHome extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  changemode('bluering');
+                  changemode('blueblue');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor:
                       onuOrange, // Set the background color to orange
                   foregroundColor: Colors.black, // Set the font color to black
                 ),
-                child: const Text('Blue'),
+                child: const Text('blue'),
               ),
               ElevatedButton(
                 onPressed: () {
