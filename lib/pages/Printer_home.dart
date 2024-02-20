@@ -1,6 +1,4 @@
 
-
-
 // Printer_home.dart - Written by Alexander Brown, Jared Swartz, Jamir Nunley, Zach Krempasky, Mallory Clark (IOT Titans Capstone Group)
 // Last Update 2/4/2024
 // Uses Octoprint REST Api to communicate with server, can either be connected to via domain name or hardcoded IP address
@@ -19,6 +17,8 @@
 // Start Job : 'start' (Work in Progress) (most likely wont be used in final product because file select allows print start as well)
 // Select File: 'select' (DEMO WORKS) (will be used to select files and start prints, see documentation for details)
 // Pause Job : 'pause' (WORKS) (See documentation for additonal parameters)
+
+// See "Job Operations" on Octoprint REST API Documentation for details on JSON File encoding
 //-------------------------------------------------------------------------------------------------------------------
 
 //------------------------------------------TO DO-------------------------------------------------------------------
@@ -27,9 +27,9 @@
 // that fetches current job details to display
 //
 //Implement Function that fetches the printer's current status and displays it
-//i.e: Print Status + what is being printed
+//i.e: Print Status + what is being printed (retrieve Job status from http request)
 //
-//Add function that allows user to change server IP address and API Key if for any reason either of those needs to be changed
+//Add function that allows user to change server IP address and API Key if for any reason either of those needs to be changed (Maybe)
 //
 //------------------------------------------------------------------------------------------------------------------
 
@@ -78,6 +78,7 @@ class PrinterHome extends StatelessWidget {
                   //Start print function code
 
                   //startJob();
+
                    startDemo();   //----THIS WORKS ---
 
                   //selectPrint("AlexBrown_M2BWindTurbineBlade.gcode");
@@ -117,7 +118,7 @@ class PrinterHome extends StatelessWidget {
                 ),
                 child: const Text('Monitor (WIP)'),
               ),
-                            ElevatedButton(
+              ElevatedButton(
                 onPressed: () {
 
                   cancelJob();
@@ -165,7 +166,7 @@ Future<http.Response> selectPrint(String filename) async {
 //Ip address will be changed once the actual server is configured
 Future<http.Response> startDemo() async{
 
-String hostName = "http://192.168.129.88/api/files/local/AlexBrown_M2BWindTurbineBlade.gcode";
+String hostName = "http://192.168.228.221/api/files/local/AlexBrown_M2BWindTurbineBlade.gcode";
 
 var url = Uri.parse(hostName);
 var headers = {
@@ -206,8 +207,7 @@ Future<http.Response> startJob() async {
 
 
 Future<http.Response> pauseJob() async {
-
-  String urlName = "http://192.168.129.88/api/job";
+  String urlName = "http://192.168.228.221/api/job";
  var url = Uri.parse(urlName);
  var headers = {
     "Content-Type": "application/json",
@@ -223,7 +223,7 @@ Future<http.Response> pauseJob() async {
 }
 
 Future<http.Response> cancelJob() async {
-  String domainName = "http://192.168.129.88/api/job";
+  String domainName = "http://192.168.228.221/api/job";
 
   var url = Uri.parse(domainName);
    var headers = {
@@ -238,7 +238,6 @@ Future<http.Response> cancelJob() async {
  return response;
 }
 
-// GET A WIRED CONNECTION (according to IT, I think it will be just fine on wifi IMO)
+// GET A WIRED CONNECTION (according to IT, I think it will be just fine on wifi IMO) however this will not be possible in the app
 //going to test both methods but unless theres an ethernet port in the maker space I want to stick with ethernet
 //also Chris needs to be considered and talked to
-
