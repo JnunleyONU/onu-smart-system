@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onu_smart/constants.dart';
+import 'package:onu_smart/pages/documentation_page.dart';
 import 'package:onu_smart/pages/printer_home.dart';
 import 'package:onu_smart/pages/tour_home.dart';
 import 'package:onu_smart/pages/fountain_home.dart';
@@ -49,6 +50,13 @@ class AdminHomePage extends StatelessWidget {
                       optionsHome: const OptionsHome()),
                 ],
               ),
+              Row(children: [
+                HomePageButtonWidget(
+                  context: context,
+                  homeIcon: Icons.folder_special,
+                  documentationPage: const DocumentationPage(),
+                )
+              ]),
             ],
           )),
       // bottomNavigationBar: bottomNavigation(),
@@ -64,6 +72,7 @@ class HomePageButtonWidget extends StatelessWidget {
     this.tourHome,
     this.printerHome,
     this.optionsHome,
+    this.documentationPage,
     required this.homeIcon,
   });
 
@@ -73,6 +82,7 @@ class HomePageButtonWidget extends StatelessWidget {
   final PrinterHome? printerHome;
   final OptionsHome? optionsHome;
   final IconData homeIcon;
+  final DocumentationPage? documentationPage;
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +103,8 @@ class HomePageButtonWidget extends StatelessWidget {
                   return const PrinterHome();
                 } else if (optionsHome != null) {
                   return const OptionsHome();
+                } else if (documentationPage != null) {
+                  return const DocumentationPage();
                 } else {
                   return const Icon(Icons.abc);
                 }
