@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:onu_smart/constants.dart';
@@ -5,6 +6,7 @@ import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:onu_smart/pages/student.dart';
 import 'package:onu_smart/pages/tour_groups_page.dart';
+import 'package:onu_smart/pages/tour_guide.dart';
 
 
 class WriteExamples extends StatefulWidget {
@@ -70,11 +72,20 @@ class _WriteExamplesState extends State<WriteExamples> {
 
     final smtpServer = gmail(username, password);
 
+    String listTheStudents(List listOfStudentsByMajor) {
+      List names = [];
+      for (var element in listOfStudentsByMajor) {
+        names.add(element.name);
+      }
+      return names.toString();
+    }
+
+  
     final message = Message()
       ..from = Address(username, 'Zach')
       ..recipients.add('z-krempasky@onu.edu')
       ..subject = 'Computer Engineering Students'
-     ..text = computerEngineeringStudents;
+      ..text = 'Computer Engineering: ${listTheStudents(computerEngineeringStudents)}${listTheStudents(computerEngineeringTourGuides)}, Computer Science: ${listTheStudents(computerScienceStudents)}${listTheStudents(computerScienceTourGuides)}';
 
     var connection = PersistentConnection(smtpServer);
 
