@@ -121,32 +121,6 @@ void sortingAlgorithm() {
     if (!sorted) {
       print("UNSORTED STUDENTS");
     }
-
-    // else if (x.major == ("electrical engineering") ||
-    //     x.major == ("EE") ||
-    //     x.major == ("Electrical Engineering")) {
-    //   if (meetsRequirements(electricalTourGuides[i])) {
-    //     electricalTourGuides[i].studentsInTour.add(x);
-    //   }
-    // } else if (x.major == ("mechanical engineering") ||
-    //     x.major == ("ME") ||
-    //     x.major == ("Mechanical Engineering")) {
-    //   if (meetsRequirements(mechanicalTourGuides[i])) {
-    //     mechanicalTourGuides[i].studentsInTour.add(x);
-    //   }
-    // } else if (x.major == ("civil engineering") ||
-    //     x.major == ("CE") ||
-    //     x.major == ("Civil Engineering")) {
-    //   if (meetsRequirements(civilTourGuides[i])) {
-    //     civilTourGuides[i].studentsInTour.add(x);
-    //   }
-    // } else if (x.major == ("computer science") ||
-    //     x.major == ("CS") ||
-    //     x.major == ("Computer Science")) {
-    //   if (meetsRequirements(computerScienceTourGuides[i])) {
-    //     computerScienceTourGuides[i].studentsInTour.add(x);
-    //   }
-    // }
   }
 }
 

@@ -4,6 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:onu_smart/constants.dart';
 import 'package:onu_smart/pages/display_sort.dart';
+import 'package:onu_smart/pages/roadmap.dart';
 import 'package:onu_smart/pages/student.dart';
 import 'package:onu_smart/pages/tour_guide.dart';
 import 'package:onu_smart/sorting_algorithm.dart';
@@ -104,6 +105,20 @@ class TourGroupsPageState extends State<TourGroupsPage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => const DisplaySort(),
+                      ));
+                  setState(() {
+                    //You can also make changes to your state here.
+                  });
+                },
+              ),
+              ElevatedButton(
+                child: const Text("Road Map"),
+                onPressed: () {
+                  sortingAlgorithm();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RoadMap(),
                       ));
                   setState(() {
                     //You can also make changes to your state here.
