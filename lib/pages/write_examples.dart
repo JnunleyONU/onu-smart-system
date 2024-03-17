@@ -25,7 +25,7 @@ class _WriteExamplesState extends State<WriteExamples> {
     _ref = FirebaseDatabase.instance.ref().child('files/cgYjW3pM9bGO5CgccM0b'); // Correct the initialization
   }
 
-  Future<void> writeToDatabase() async {
+ /* Future<void> writeToDatabase() async {
     // Example list of strings
     List<List<String>> list = [
       ["jerry", "bob", "joe"],
@@ -50,9 +50,9 @@ class _WriteExamplesState extends State<WriteExamples> {
       // Handle any errors that occur during the data upload
       print('Error uploading data to Firebase: $error');
     }
-  }
+  }*/
 
-  Future<void> readFromDatabase() async {
+ /* Future<void> readFromDatabase() async {
     try {
       // Read data from the database
       DatabaseEvent event = await _ref.once();
@@ -64,7 +64,7 @@ class _WriteExamplesState extends State<WriteExamples> {
       // Handle any errors that occur during the data read
       print('Error reading data from Firebase: $error');
     }
-  }
+  }*/
 
   Future sendEmail() async{
     String username ='zkremp418@gmail.com';
@@ -84,33 +84,49 @@ class _WriteExamplesState extends State<WriteExamples> {
     final message = Message()
       ..from = Address(username, 'Zach')
       ..recipients.add('z-krempasky@onu.edu')
-      ..subject = 'Computer Engineering Students'
-      ..text = 'Computer Engineering: ${listTheStudents(computerEngineeringStudents)}${listTheStudents(computerEngineeringTourGuides)}, Computer Science: ${listTheStudents(computerScienceStudents)}${listTheStudents(computerScienceTourGuides)}';
+      ..subject = 'Tour Groups';
+
+
+      /*Once we add email to the excel sheet being imported and to the masterTourGuideObjectList, 
+      we should be able to pull that using the same for loop style as below in order to dynamically send it to the professors signed up*/
+      
+      /*String sentTo = '';
+      for(int i = 0; i < masterTourGuideObjectList.length; i++){
+        sentTo += ${masterTourGuideObjectList[i].email}
+      }
+      message.recipients = sentTo;*/
+
+      String groups = '';
+      for(int index1 = 0; index1 < masterTourGuideObjectList.length; index1++){
+        groups += "Faculty ${index1 + 1}: ${masterTourGuideObjectList[index1].name}: ${masterTourGuideObjectList[index1].major}\n";
+
+        for(int index2 = 0; index2 < masterTourGuideObjectList[index1].studentsInTour.length; index2++){
+          groups += "Student ${index2 + 1}: ${masterTourGuideObjectList[index1].studentsInTour[index2].name}: ${masterTourGuideObjectList[index1].studentsInTour[index2].major}\n";
+        }
+        groups+="/n";
+      }
+      message.text = groups;
+    
+    /*final message2 = Message()
+      ..from = Address(username, 'Zach')
+      ..recipients.add('z-krempasky@onu.edu')
+      ..subject = 'Your Tour Group';
+
+      String students = '';
+      for(int i = 0; i < masterTourGuideObjectList.length; i++){
+        for(int j = 0; j < masterTourGuideObjectList[i].studentsInTour.length; j++){
+            students += "Student ${j + 1}: ${masterTourGuideObjectList[i].studentsInTour[j].name}: ${masterTourGuideObjectList[i].studentsInTour[j].major}\n";
+        }
+      }
+      message2.text = students;*/
+
+
 
     var connection = PersistentConnection(smtpServer);
 
     await connection.send(message);
+    //await connection.send(message2);
     await connection.close();
-      /*  final user = await GoogleAuthApi.signIn();
-
-      if (user == null) return;
-
-      final email = user.email;
-      final auth = await user.authentication;
-      final token = auth.accessToken!;
-
-      final smtpServer = gmailSaslXoauth2(email, token);
-      final message = Message()
-        ..from = Address(email, 'Zach')
-        ..recipients = ['z-krempasky@onu.edu']
-        ..subject = 'Hello'
-        ..text = 'Test email';
-
-      try{
-        await send(message, smtpServer);
-      }on MailerException catch (e){
-        print(e);
-      */
   }
 
 
@@ -118,7 +134,7 @@ class _WriteExamplesState extends State<WriteExamples> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Write and Read Test'),
+        title: const Text('Export Groups'),
         backgroundColor: onuOrange,
       ),
       body: Center(
@@ -132,17 +148,9 @@ class _WriteExamplesState extends State<WriteExamples> {
                   foregroundColor: Colors.black,
                   backgroundColor: onuOrange, // Set the font color to black
                 ),
-                child: const Text('Export File'),
+                child: const Text('Export'),
               ),
               const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: readFromDatabase,
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black,
-                  backgroundColor: onuOrange, // Set the font color to black
-                ),
-                child: const Text('Read from Database'),
-              ),
             ],
           ),
         ),

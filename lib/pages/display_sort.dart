@@ -65,13 +65,19 @@ class _DisplaySortState extends State<DisplaySort> {
                                         color: Colors.white,
                                         child: Text(
                                             "Student ${index2 + 1}: ${masterTourGuideObjectList[index1].studentsInTour[index2].name}: ${masterTourGuideObjectList[index1].studentsInTour[index2].major}"));
-                                  }))
+                                  }
+                                )
+                              )
                           // ListView.builder()
                           // "Faculty $index: masterTourGuideObjectList[index]"),
                         ],
-                      )),
-                    );
-                  }),
-            )));
+                      )
+                    ),
+                  );
+                }
+              ),
+            )
+          )
+        );
   }
 }
