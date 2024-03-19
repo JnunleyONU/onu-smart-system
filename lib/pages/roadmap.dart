@@ -14,7 +14,7 @@ class _RoadMap extends State<RoadMap> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: onuOrange,
-        appBar: generalAppBar("Tour Groupings"),
+        appBar: generalAppBar("Road Map"),
         body: Center(
           child: Container(
               height: 800,

@@ -1,6 +1,4 @@
-import 'dart:ffi';
-
-List masterTourGuideObjectList = ['', '', ''];
+List<TourGuide> masterTourGuideObjectList = [];
 List tourGuidesWithAddedEmpties = [];
 List computerScienceTourGuides = [];
 List computerEngineeringTourGuides = [];
