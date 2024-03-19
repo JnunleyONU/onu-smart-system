@@ -6,8 +6,8 @@ void sortingAlgorithm() {
   int cpeIndex = 0;
   bool sorted = false;
 
-  int unsortedLength = unsortedTourGuides.length;
-  int unsortedIndex = 0;
+  int undecidedLength = undecidedTourGuides.length;
+  int undecidedIndex = 0;
 
   int eeGuidesLength = electricalTourGuides.length;
   int eeIndex = 0;
@@ -26,15 +26,17 @@ void sortingAlgorithm() {
     if (x.major == ("computer engineering")) {
       for (int i = 0; i < cpeGuidesLength; i++) {
         if (meetsRequirements(
-            computerEngineeringTourGuides[(cpeIndex + i) % cpeGuidesLength])) {
-          computerEngineeringTourGuides[(cpeIndex + i) % cpeGuidesLength]
+            computerEngineeringTourGuides[(cpeIndex) % cpeGuidesLength])) {
+          computerEngineeringTourGuides[(cpeIndex) % cpeGuidesLength]
               .studentsInTour
               .add(x);
           cpeIndex++;
           sorted = true;
           break;
         } else {
-          print(x.name + "Unsorted test: $i");
+          cpeIndex++;
+          print(x.name +
+              "does not fit in ${computerEngineeringTourGuides[(cpeIndex + i) % cpeGuidesLength].name}'s Tour");
         }
       }
     }
@@ -42,15 +44,17 @@ void sortingAlgorithm() {
     if (x.major == ("electrical engineering")) {
       for (int i = 0; i < eeGuidesLength; i++) {
         if (meetsRequirements(
-            electricalTourGuides[(eeIndex + i) % eeGuidesLength])) {
-          electricalTourGuides[(eeIndex + i) % eeGuidesLength]
+            electricalTourGuides[(eeIndex) % eeGuidesLength])) {
+          electricalTourGuides[(eeIndex) % eeGuidesLength]
               .studentsInTour
               .add(x);
           eeIndex++;
           sorted = true;
           break;
         } else {
-          print(x.name + "Unsorted test: $i");
+          eeIndex++;
+          print(x.name +
+              "does not fit in ${electricalTourGuides[(eeIndex + i) % eeGuidesLength].name}'s Tour");
         }
       }
     }
@@ -58,31 +62,34 @@ void sortingAlgorithm() {
     if (x.major == ("mechanical engineering")) {
       for (int i = 0; i < meGuidesLength; i++) {
         if (meetsRequirements(
-            computerEngineeringTourGuides[(meIndex + i) % meGuidesLength])) {
-          computerEngineeringTourGuides[(meIndex + i) % meGuidesLength]
+            mechanicalTourGuides[(meIndex) % meGuidesLength])) {
+          mechanicalTourGuides[(meIndex) % meGuidesLength]
               .studentsInTour
               .add(x);
           meIndex++;
           sorted = true;
           break;
         } else {
-          print(x.name + "Unsorted test: $i");
+          meIndex++;
+
+          print(x.name +
+              "does not fit in ${mechanicalTourGuides[(meIndex + i) % meGuidesLength].name}'s Tour");
         }
       }
     }
 
     if (x.major == ("civil engineering")) {
       for (int i = 0; i < ceGuidesLength; i++) {
-        if (meetsRequirements(
-            computerEngineeringTourGuides[(ceIndex + i) % ceGuidesLength])) {
-          computerEngineeringTourGuides[(ceIndex + i) % ceGuidesLength]
-              .studentsInTour
-              .add(x);
+        if (meetsRequirements(civilTourGuides[(ceIndex) % ceGuidesLength])) {
+          civilTourGuides[(ceIndex) % ceGuidesLength].studentsInTour.add(x);
           ceIndex++;
           sorted = true;
           break;
         } else {
-          print(x.name + "Unsorted test: $i");
+          ceIndex++;
+
+          print(x.name +
+              "does not fit in ${civilTourGuides[(ceIndex + i) % ceGuidesLength].name}'s Tour");
         }
       }
     }
@@ -90,28 +97,30 @@ void sortingAlgorithm() {
     if (x.major == ("computer science")) {
       for (int i = 0; i < csGuideslength; i++) {
         if (meetsRequirements(
-            computerScienceTourGuides[(csIndex + i) % csGuideslength])) {
-          computerScienceTourGuides[(csIndex + i) % csGuideslength]
+            computerScienceTourGuides[(csIndex) % csGuideslength])) {
+          computerScienceTourGuides[(csIndex) % csGuideslength]
               .studentsInTour
               .add(x);
           csIndex++;
           sorted = true;
           break;
         } else {
-          print(x.name + "Unsorted test: $i");
+          csIndex++;
+
+          print(x.name +
+              "does not fit in ${computerScienceTourGuides[(csIndex + i) % csGuideslength].name}'s Tour");
         }
       }
     }
 
-    if (x.major == ("unsorted") || !sorted) {
-      print(x.name + "UnSORTED");
+    if (x.major == ("undecided") || !sorted) {
       for (int i = 0; i < cpeGuidesLength; i++) {
         if (meetsRequirements(
-            unsortedTourGuides[(unsortedIndex + i) % unsortedLength])) {
-          unsortedTourGuides[(unsortedIndex + i) % unsortedLength]
+            undecidedTourGuides[(undecidedIndex + i) % undecidedLength])) {
+          undecidedTourGuides[(undecidedIndex + i) % undecidedLength]
               .studentsInTour
               .add(x);
-          unsortedIndex++;
+          undecidedIndex++;
           sorted = true;
           break;
         }
@@ -119,7 +128,14 @@ void sortingAlgorithm() {
     }
 
     if (!sorted) {
-      print("UNSORTED STUDENTS");
+      print("UNSORTED STUDENT ${x.name}");
+      for (int i = 0; i < masterTourGuideObjectList.length; i++) {
+        if (meetsRequirements(masterTourGuideObjectList[i])) {
+          masterTourGuideObjectList[i].studentsInTour.add(x);
+          sorted = true;
+          break;
+        }
+      }
     }
   }
 }

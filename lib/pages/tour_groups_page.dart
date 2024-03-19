@@ -50,82 +50,102 @@ class TourGroupsPageState extends State<TourGroupsPage> {
               topRight: Radius.circular(30),
             ),
           ),
-          child: Column(
-            children: [
-              // createTexttextfields(5),
-              const Text(textAlign: TextAlign.right, "Computer Engineering: "),
-              Text(listTheStudents(computerEngineeringStudents) +
-                  listTheStudents(computerEngineeringTourGuides)),
+          child: Center(
+            child: Column(
+              children: [
+                // createTexttextfields(5),
+                const Text(
+                    textAlign: TextAlign.right,
+                    "Computer Engineering:",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(
+                    "Students:\n${listTheStudents(computerEngineeringStudents)}\nFaculty: \n${listTheStudents(computerEngineeringTourGuides)}"),
+                const Padding(padding: EdgeInsets.only(top: 10)),
 
-              const Text(
-                  textAlign: TextAlign.right, "Mechanical Engineering: "),
-              Text(listTheStudents(mechanicalStudents) +
-                  listTheStudents(mechanicalTourGuides)),
+                const Text(
+                  textAlign: TextAlign.right,
+                  "Mechanical Engineering:",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(listTheStudents(mechanicalStudents) +
+                    listTheStudents(mechanicalTourGuides)),
 
-              const Text(textAlign: TextAlign.right, "Civil Engineering: "),
-              Text(listTheStudents(civilStudents) +
-                  listTheStudents(civilTourGuides)),
+                const Text(
+                    textAlign: TextAlign.right,
+                    "Civil Engineering:",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(listTheStudents(civilStudents) +
+                    listTheStudents(civilTourGuides)),
 
-              const Text(
-                  textAlign: TextAlign.right, "Electrical Engineering: "),
-              Text(listTheStudents(electricalStudents) +
-                  listTheStudents(electricalTourGuides)),
+                const Text(
+                    textAlign: TextAlign.right,
+                    "Electrical Engineering:",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(listTheStudents(electricalStudents) +
+                    listTheStudents(electricalTourGuides)),
 
-              const Text(textAlign: TextAlign.right, "Computer Science: "),
-              Text(listTheStudents(computerScienceStudents) +
-                  listTheStudents(computerScienceTourGuides)),
+                const Text(
+                    textAlign: TextAlign.right,
+                    "Computer Science:",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(listTheStudents(computerScienceStudents) +
+                    listTheStudents(computerScienceTourGuides)),
 
-              const Text(textAlign: TextAlign.right, "UNSURE: "),
-              Text(listTheStudents(unsortedStudents) +
-                  listTheStudents(unsortedTourGuides)),
+                const Text(
+                    textAlign: TextAlign.right,
+                    "Undecided / General Admission:",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(listTheStudents(unsortedStudents) +
+                    listTheStudents(undecidedTourGuides)),
 
-              ElevatedButton(
-                child:
-                    const Text("Create Student Objects and dispaly by Major"),
-                onPressed: () {
-                  createStudentsFromFirebase();
-                  createTourGuidesFromFirebase();
-                },
-              ),
-              ElevatedButton(
-                child: const Text("Sort Students"),
-                onPressed: () {
-                  sortStudentsByMajor(masterStudentObjectList);
-                  sortTourGuideByMajor(masterTourGuideObjectList);
-                  setState(() {
-                    //You can also make changes to your state here.
-                  });
-                },
-              ),
-              ElevatedButton(
-                child: const Text("Display Sort"),
-                onPressed: () {
-                  sortingAlgorithm();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const DisplaySort(),
-                      ));
-                  setState(() {
-                    //You can also make changes to your state here.
-                  });
-                },
-              ),
-              ElevatedButton(
-                child: const Text("Road Map"),
-                onPressed: () {
-                  sortingAlgorithm();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const RoadMap(),
-                      ));
-                  setState(() {
-                    //You can also make changes to your state here.
-                  });
-                },
-              ),
-            ],
+                ElevatedButton(
+                  child:
+                      const Text("Create Student Objects and dispaly by Major"),
+                  onPressed: () {
+                    createStudentsFromFirebase();
+                    createTourGuidesFromFirebase();
+                  },
+                ),
+                ElevatedButton(
+                  child: const Text("Display Sorted"),
+                  onPressed: () {
+                    sortStudentsByMajor(masterStudentObjectList);
+                    sortTourGuideByMajor(masterTourGuideObjectList);
+                    setState(() {
+                      //You can also make changes to your state here.
+                    });
+                  },
+                ),
+                ElevatedButton(
+                  child: const Text("Display Tour Groups"),
+                  onPressed: () {
+                    sortingAlgorithm();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const DisplaySort(),
+                        ));
+                    setState(() {
+                      //You can also make changes to your state here.
+                    });
+                  },
+                ),
+                ElevatedButton(
+                  child: const Text("Road Map"),
+                  onPressed: () {
+                    sortingAlgorithm();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RoadMap(),
+                        ));
+                    setState(() {
+                      //You can also make changes to your state here.
+                    });
+                  },
+                ),
+              ],
+            ),
           ),
         ));
   }
