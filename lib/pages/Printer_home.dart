@@ -1,7 +1,7 @@
 
 
 // Printer_home.dart - Written by Alexander Brown, Jared Swartz, Jamir Nunley, Zach Krempasky, Mallory Clark (IOT Titans Capstone Group)
-// Last Update 2/4/2024
+// Last Update 3/5/2024
 // Uses Octoprint REST Api to communicate with server, can either be connected to via domain name or hardcoded IP address
 //
 // [DUE TO NATURE OF ONU NETWORK IP ADDRESS MUST BE HARDCODED - DOMAIN NAMES CANNOT BE GIVEN]
@@ -17,8 +17,8 @@
 // Cancel Job : 'cancel' (WORKS)
 // Start Job : 'start' (Work in Progress) (most likely wont be used in final product because file select allows print start as well)
 // Select File: 'select' (will be used to select files and start prints, see documentation for details)
-// Pause Job : 'pause' (WORKS) (See documentation for additonal parameters)
-// 
+// Pause Job : 'pause'  (See documentation for additonal parameters)
+// Resume Job : 
 
 // See "Job Operations" on Octoprint REST API Documentation for details on JSON File encoding
 //-------------------------------------------------------------------------------------------------------------------
@@ -50,6 +50,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:onu_smart/constants.dart';
+import 'package:video_player/video_player.dart';
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -61,11 +62,36 @@ String apiKey = "0D6B765B66C94A75B89233E93946C0EA"; //api key that allows for ap
 
 
 //GUI for Printer Home page
-class PrinterHome extends StatelessWidget {
-  const PrinterHome({super.key});
+class PrinterHome extends StatefulWidget {
+ const PrinterHome({super.key});
 
-  @override
-  Widget build(BuildContext context) {
+ @override
+ _PrinterHomeState createState() => _PrinterHomeState();
+}
+
+class _PrinterHomeState extends State<PrinterHome> {
+ late VideoPlayerController _controller;
+ late Future<void> _initializeVideoPlayerFuture;
+
+ @override
+ void initState() {
+    super.initState();
+    _controller = VideoPlayerController.network(
+      'http://$serverIP/webcam/?action=stream',
+      httpHeaders: {"X-Api-Key": apiKey},
+    );
+    _initializeVideoPlayerFuture = _controller.initialize();
+ }
+
+ @override
+ void dispose() {
+    _controller.dispose();
+    super.dispose();
+ }
+
+ @override
+ Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: onuOrange,
       appBar: generalAppBar("Smart Printing"),
@@ -79,10 +105,27 @@ class PrinterHome extends StatelessWidget {
             topRight: Radius.circular(30),
           ),
         ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+        child: Column(
+          children: [
+            FutureBuilder(
+              future: _initializeVideoPlayerFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  //adjusted video size
+                 return SizedBox(
+                  width: size.width/1.1,
+                  height: size.height/3, //1:1 of the screen
+                  child: AspectRatio(
+                    aspectRatio: _controller.value.aspectRatio,
+                    child: VideoPlayer(_controller),
+                 ),
+                 );
+                } else { 
+                    return const Center(child: CircularProgressIndicator(),);
+                }
+              },
+                  ),
+            //Expanded(
               ElevatedButton(
                 onPressed: () {
                   //Start print function code
@@ -102,7 +145,6 @@ class PrinterHome extends StatelessWidget {
                   //pause print function code
 
                   pauseJob();
-
 
 
                 },
@@ -139,8 +181,8 @@ class PrinterHome extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
+    
   }
 }
 

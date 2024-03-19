@@ -4,5 +4,6 @@
         "titleBar.activeBackground": "#37450A",
         "titleBar.activeForeground": "#F7FCE9"
     },
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
