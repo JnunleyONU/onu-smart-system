@@ -1,15 +1,18 @@
+import 'dart:ffi';
+
 List masterTourGuideObjectList = ['', '', ''];
+List tourGuidesWithAddedEmpties = [];
 List computerScienceTourGuides = [];
 List computerEngineeringTourGuides = [];
 List electricalTourGuides = [];
 List mechanicalTourGuides = [];
 List civilTourGuides = [];
-List unsortedTourGuides = [];
+List undecidedTourGuides = [];
 
 class TourGuide {
   final String name;
-  final String major;
-  final String gender;
+  String major;
+  final String email;
   final String studentLifeFair;
   final String polarPreview;
   List studentsInTour;
@@ -18,7 +21,7 @@ class TourGuide {
   TourGuide(
     this.name,
     this.major,
-    this.gender,
+    this.email,
     this.polarPreview,
     this.studentLifeFair,
     this.studentsInTour,
@@ -37,12 +40,65 @@ void createTourGuides(Map<String, dynamic>? rawFacultyData) {
     masterTourGuideObjectList.add(TourGuide(
         element,
         rawFacultyData?[element]["Department"],
-        rawFacultyData?[element]["Gender"],
+        rawFacultyData?[element]["Email"],
         rawFacultyData?[element]["Student life fair"],
         rawFacultyData?[element]["Tour"], []));
   });
 
-  // print(masterStudentObjectList);
+  for (final x in masterTourGuideObjectList) {
+    if (x.major == "cpe" ||
+        x.major == "computer engineering" ||
+        x.major == "Computer Engineering" ||
+        x.major == "CPE" ||
+        x.major == "CpE") {
+      x.major = "computer engineering";
+    } else if (x.major == "EE" ||
+        x.major == "electrical engineering" ||
+        x.major == "Electrical engineering" ||
+        x.major == "Electrical Engineering" ||
+        x.major == "Electrical" ||
+        x.major == "electrical" ||
+        x.major == "ee") {
+      x.major = "electrical engineering";
+    } else if (x.major == "CE" ||
+        x.major == "civil engineering" ||
+        x.major == "Civil Engineering" ||
+        x.major == "Civil engineering" ||
+        x.major == "Civil" ||
+        x.major == "civil" ||
+        x.major == "ce") {
+      x.major = "civil engineering";
+    } else if (x.major == "ME" ||
+        x.major == "mechanical engineering" ||
+        x.major == "Mechanical Engineering" ||
+        x.major == "Mechanical engineering" ||
+        x.major == "Mechanical" ||
+        x.major == "mechanical" ||
+        x.major == "me") {
+      x.major = "mechanical engineering";
+    } else if (x.major == "CS" ||
+        x.major == "computer science" ||
+        x.major == "Computer Science" ||
+        x.major == "Computer science" ||
+        x.major == "cs") {
+      x.major = "computer science";
+    } else {
+      x.major = "undecided";
+    }
+  }
+  createExtenedTourGuidArray();
+}
+
+void createExtenedTourGuidArray() {
+  tourGuidesWithAddedEmpties = [];
+
+  for (int i = 0; i < 50; i++) {
+    if (i < masterTourGuideObjectList.length) {
+      tourGuidesWithAddedEmpties.add(masterTourGuideObjectList[i]);
+    } else {
+      tourGuidesWithAddedEmpties.add(TourGuide('', '', '', '', '', []));
+    }
+  }
 }
 
 /// Resets Student List by major
@@ -55,7 +111,7 @@ void sortTourGuideByMajor(List studentList) {
   civilTourGuides = [];
   computerScienceTourGuides = [];
 
-  unsortedTourGuides = [];
+  undecidedTourGuides = [];
 
   for (var element in studentList) {
     switch (element.major) {
@@ -70,7 +126,7 @@ void sortTourGuideByMajor(List studentList) {
       case "computer science":
         computerScienceTourGuides.add(element);
       default:
-        unsortedTourGuides.add(element);
+        undecidedTourGuides.add(element);
     }
   }
 }

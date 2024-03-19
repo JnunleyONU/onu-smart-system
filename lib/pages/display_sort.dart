@@ -46,7 +46,13 @@ class _DisplaySortState extends State<DisplaySort> {
                                       "Faculty ${index1 + 1}: ${masterTourGuideObjectList[index1].name}: ${masterTourGuideObjectList[index1].major}",
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold),
-                                )
+                                ),
+                                // TextSpan(
+                                //   text:
+                                //       "\n Email: ${masterTourGuideObjectList[index1].email}",
+                                //   style: const TextStyle(
+                                //       fontWeight: FontWeight.bold),
+                                // )
                               ])),
                           // Text(
                           //     "Faculty ${index1 + 1}: ${masterTourGuideObjectList[index1].name}"),
