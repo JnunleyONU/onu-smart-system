@@ -2,9 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:onu_smart/constants.dart';
-import 'package:onu_smart/pages/read_examples.dart';
+import 'package:onu_smart/pages/display_sort.dart';
+import 'package:onu_smart/pages/roadmap.dart';
+import 'package:onu_smart/pages/student.dart';
 import 'package:onu_smart/pages/tour_groups_page.dart';
+import 'package:onu_smart/pages/tour_guide.dart';
 import 'package:onu_smart/pages/write_examples.dart';
+import 'package:onu_smart/sorting_algorithm.dart';
 
 class TourHome extends StatelessWidget {
   const TourHome({super.key});
@@ -29,6 +33,83 @@ class TourHome extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
+                onPressed: () async {
+                  await createStudentsFromFirebase();
+                  await createTourGuidesFromFirebase();
+                  sortStudentsByMajor(masterStudentObjectList);
+                  sortTourGuideByMajor(masterTourGuideObjectList);
+                  sortingAlgorithm();
+                  Navigator.push(
+                      // ignore: use_build_context_synchronously
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const DisplaySort(),
+                      ));
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      onuOrange, // Set the background color to orange
+                  padding: const EdgeInsets.all(
+                      16), // Set 16 pixels of padding on all sides
+                ),
+                child: const Text('View Sorted Groups'),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  try {
+                    print("Trying");
+                    masterTourGuideObjectList[0].name;
+                    print("tried");
+                  } catch (e) {
+                    print("catching");
+                    await createStudentsFromFirebase();
+                    await createTourGuidesFromFirebase();
+                    sortStudentsByMajor(masterStudentObjectList);
+                    sortTourGuideByMajor(masterTourGuideObjectList);
+                    sortingAlgorithm();
+                  }
+
+                  Navigator.push(
+                      // ignore: use_build_context_synchronously
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RoadMap(),
+                      ));
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      onuOrange, // Set the background color to orange
+                  padding: const EdgeInsets.all(
+                      16), // Set 16 pixels of padding on all sides
+                ),
+                child: const Text('Road Map'),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  try {
+                    print("Trying");
+                    masterTourGuideObjectList[0].name;
+                    sendEmail();
+                    print("tried");
+                  } catch (e) {
+                    print("catching");
+                    await createStudentsFromFirebase();
+                    await createTourGuidesFromFirebase();
+                    sortStudentsByMajor(masterStudentObjectList);
+                    sortTourGuideByMajor(masterTourGuideObjectList);
+                    sortingAlgorithm();
+                    sendEmail();
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      onuOrange, // Set the background color to orange
+                  padding: const EdgeInsets.all(
+                      16), // Set 16 pixels of padding on all sides
+                ),
+                child: const Text('Email Groups'),
+              ),
+              ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                       context,
@@ -42,39 +123,7 @@ class TourHome extends StatelessWidget {
                   padding: const EdgeInsets.all(
                       16), // Set 16 pixels of padding on all sides
                 ),
-                child: const Text('Information'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const WriteExamples(),
-                      ));
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      onuOrange, // Set the background color to orange
-                  padding: const EdgeInsets.all(
-                      16), // Set 16 pixels of padding on all sides
-                ),
-                child: const Text('WRITE'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ReadExamples(),
-                      ));
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      onuOrange, // Set the background color to orange
-                  padding: const EdgeInsets.all(
-                      16), // Set 16 pixels of padding on all sides
-                ),
-                child: const Text('Read'),
+                child: const Text('Debug'),
               ),
             ],
           ),

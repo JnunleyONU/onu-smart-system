@@ -17,24 +17,6 @@ class TourGroupsPage extends StatefulWidget {
 }
 
 class TourGroupsPageState extends State<TourGroupsPage> {
-  Future<void> createStudentsFromFirebase() async {
-    DatabaseReference ref =
-        FirebaseDatabase.instance.ref("$incomingStudentExcelRoot/Students");
-
-    final DataSnapshot snapShot = await ref.get();
-    Map<String, dynamic>? rawData = jsonDecode(jsonEncode(snapShot.value));
-    createStudents(rawData);
-  }
-
-  Future<void> createTourGuidesFromFirebase() async {
-    DatabaseReference ref =
-        FirebaseDatabase.instance.ref("$tourGuideExcelRoot/Polar Preview");
-
-    final DataSnapshot snapShot = await ref.get();
-    Map<String, dynamic>? rawData = jsonDecode(jsonEncode(snapShot.value));
-    createTourGuides(rawData);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -189,4 +171,22 @@ class TourGroupsPageState extends State<TourGroupsPage> {
 
   final List<String> entries = <String>['A', 'B', 'C'];
   final List<int> colorCodes = <int>[600, 500, 100];
+}
+
+Future<void> createStudentsFromFirebase() async {
+  DatabaseReference ref =
+      FirebaseDatabase.instance.ref("$incomingStudentExcelRoot/Students");
+
+  final DataSnapshot snapShot = await ref.get();
+  Map<String, dynamic>? rawData = jsonDecode(jsonEncode(snapShot.value));
+  createStudents(rawData);
+}
+
+Future<void> createTourGuidesFromFirebase() async {
+  DatabaseReference ref =
+      FirebaseDatabase.instance.ref("$tourGuideExcelRoot/Polar Preview");
+
+  final DataSnapshot snapShot = await ref.get();
+  Map<String, dynamic>? rawData = jsonDecode(jsonEncode(snapShot.value));
+  createTourGuides(rawData);
 }
