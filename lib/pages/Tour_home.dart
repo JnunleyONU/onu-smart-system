@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:onu_smart/constants.dart';
 import 'package:onu_smart/pages/display_sort.dart';
-import 'package:onu_smart/pages/read_examples.dart';
 import 'package:onu_smart/pages/roadmap.dart';
 import 'package:onu_smart/pages/student.dart';
 import 'package:onu_smart/pages/tour_groups_page.dart';

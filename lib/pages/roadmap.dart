@@ -80,13 +80,13 @@ class _RoadMap extends State<RoadMap> {
                                 '1B',
                                 '115',
                                 "Material's Lab",
-                                masterTourGuideObjectList[1].name ?? "nothing "
+                                masterTourGuideObjectList[1].name
                               ]),
                               buildRow([
                                 '1C',
                                 '117',
                                 "Concrete Lab",
-                                masterTourGuideObjectList[2].name ?? "nothing "
+                                masterTourGuideObjectList[2].name
                               ]),
                               buildRow([
                                 '1D',
