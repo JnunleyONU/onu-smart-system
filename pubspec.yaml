@@ -43,6 +43,7 @@ dependencies:
   google_fonts: ^6.1.0
   firebase_database: ^10.3.8
   video_player: ^2.8.3
+  webview_flutter : ^3.0.0
 
 dev_dependencies:
   flutter_test:

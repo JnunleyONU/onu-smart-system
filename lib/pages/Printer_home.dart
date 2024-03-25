@@ -50,18 +50,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:onu_smart/constants.dart';
-import 'package:video_player/video_player.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+// Global Variables
+String serverIP = "192.168.23.241"; // IP address of current OctoPrint server
+String apiKey = "0D6B765B66C94A75B89233E93946C0EA"; // API key for server control
 
-//Global Variables
-String serverIP = "192.168.23.241"; //Ip address of current octopi server
-String apiKey = "0D6B765B66C94A75B89233E93946C0EA"; //api key that allows for application to control server without user authentication
-
-
-//GUI for Printer Home page
 class PrinterHome extends StatefulWidget {
  const PrinterHome({super.key});
 
@@ -70,25 +67,6 @@ class PrinterHome extends StatefulWidget {
 }
 
 class _PrinterHomeState extends State<PrinterHome> {
- late VideoPlayerController _controller;
- late Future<void> _initializeVideoPlayerFuture;
-
- @override
- void initState() {
-    super.initState();
-    _controller = VideoPlayerController.network(
-      'http://$serverIP/webcam/?action=stream',
-      httpHeaders: {"X-Api-Key": apiKey},
-    );
-    _initializeVideoPlayerFuture = _controller.initialize();
- }
-
- @override
- void dispose() {
-    _controller.dispose();
-    super.dispose();
- }
-
  @override
  Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -107,25 +85,12 @@ class _PrinterHomeState extends State<PrinterHome> {
         ),
         child: Column(
           children: [
-            FutureBuilder(
-              future: _initializeVideoPlayerFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  //adjusted video size
-                 return SizedBox(
-                  width: size.width/1.1,
-                  height: size.height/3, //1:1 of the screen
-                  child: AspectRatio(
-                    aspectRatio: _controller.value.aspectRatio,
-                    child: VideoPlayer(_controller),
-                 ),
-                 );
-                } else { 
-                    return const Center(child: CircularProgressIndicator(),);
-                }
-              },
-                  ),
-            //Expanded(
+            Expanded(
+              child: WebView(
+                initialUrl: 'http://$serverIP/webcam/?action=stream',
+                javascriptMode: JavascriptMode.unrestricted,
+              ),
+            ),
               ElevatedButton(
                 onPressed: () {
                   //Start print function code
@@ -248,6 +213,7 @@ Future<http.Response> pauseJob() async {
  return response;
 }
 
+//Resumes Job
 Future<http.Response> resumeJob() async {
   String urlName = "http://$serverIP/api/job";
  var url = Uri.parse(urlName);
