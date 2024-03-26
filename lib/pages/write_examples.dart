@@ -97,7 +97,7 @@ Future sendEmail() async {
       ..subject = 'Tour Groups for ${professor.name}'
       ..recipients.add(professor.email);
 
-    String individualGroups = 'Faculty: ${professor.name}, Major: ${professor.major}\n';
+    String individualGroups = '';
 
     for (int j = 0; j < professor.studentsInTour.length; j++) {
       var student = professor.studentsInTour[j];
