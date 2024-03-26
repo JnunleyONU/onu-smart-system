@@ -59,57 +59,61 @@ Future sendEmail() async {
 
   final smtpServer = gmail(username, password);
 
-  // ignore: unused_element
-  String listTheStudents(List listOfStudentsByMajor) {
-    List names = [];
-    for (var element in listOfStudentsByMajor) {
-      names.add(element.name);
-    }
-    return names.toString();
-  }
+  final message1 = Message()
+    ..from = Address(username, 'JLK Smart App')
+    ..recipients.add('z-krempasky@onu.edu')
+    ..subject = 'Final Tour Groups';
 
-  final message = Message()
-    ..from = Address(username, 'Zach')
-    //..recipients.add('z-krempasky@onu.edu')
-    ..subject = 'Tour Groups';
 
-  /*Once we add email to the excel sheet being imported and to the masterTourGuideObjectList, 
-      we should be able to pull that using the same for loop style as below in order to dynamically send it to the professors signed up*/
+  /*for (int i = 0; i < masterTourGuideObjectList.length; i++) {
+    message1.recipients.add(masterTourGuideObjectList[i].email);
+  }*/
 
-  for (int i = 0; i < masterTourGuideObjectList.length; i++) {
-    message.recipients.add(masterTourGuideObjectList[i].email);
-  }
-
-  String groups = '';
+  String masterGroups = '';
   for (int index1 = 0; index1 < masterTourGuideObjectList.length; index1++) {
-    groups +=
+    masterGroups +=
         "Faculty ${index1 + 1}: ${masterTourGuideObjectList[index1].name}: ${masterTourGuideObjectList[index1].major}\n";
 
     for (int index2 = 0;
         index2 < masterTourGuideObjectList[index1].studentsInTour.length;
         index2++) {
-      groups +=
+      masterGroups +=
           "Student ${index2 + 1}: ${masterTourGuideObjectList[index1].studentsInTour[index2].name}: ${masterTourGuideObjectList[index1].studentsInTour[index2].major}\n";
     }
   }
-  message.text = groups;
-
-  /*final message2 = Message()
-      ..from = Address(username, 'Zach')
-      ..recipients.add('z-krempasky@onu.edu')
-      ..subject = 'Your Tour Group';
-
-      String students = '';
-      for(int i = 0; i < masterTourGuideObjectList.length; i++){
-        for(int j = 0; j < masterTourGuideObjectList[i].studentsInTour.length; j++){
-            students += "Student ${j + 1}: ${masterTourGuideObjectList[i].studentsInTour[j].name}: ${masterTourGuideObjectList[i].studentsInTour[j].major}\n";
-        }
-      }
-      message2.text = students;*/
+  message1.text = masterGroups;
 
   var connection = PersistentConnection(smtpServer);
 
-  await connection.send(message);
-  //await connection.send(message2);
+  await connection.send(message1);
   await connection.close();
+
+  //This next portion of code is to send the tour guides their individual groups
+
+  for (int i = 0; i < masterTourGuideObjectList.length; i++) {
+    var professor = masterTourGuideObjectList[i];
+    var message = Message()
+      ..from = Address(username, 'JLK Smart App')
+      ..subject = 'Tour Groups for ${professor.name}'
+      ..recipients.add(professor.email);
+
+    String individualGroups = '';
+
+    for (int j = 0; j < professor.studentsInTour.length; j++) {
+      var student = professor.studentsInTour[j];
+      individualGroups +=
+          "Student ${j + 1}: ${student.name}, Major: ${student.major}\n";
+    }
+
+    message.text = individualGroups;
+
+    try {
+      var connection = PersistentConnection(smtpServer);
+      await connection.send(message);
+      await connection.close();
+      print('Email sent to ${professor.email}');
+    } catch (e) {
+      print('Error sending email to ${professor.email}: $e');
+    }
+  }
 }
