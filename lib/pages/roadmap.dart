@@ -67,6 +67,7 @@ class _RoadMap extends State<RoadMap> {
                                 'Location',
                                 'Room',
                                 'Description',
+                                'Host',
                                 'Tour Guide Who Starts Here'
                               ]),
 
@@ -74,120 +75,140 @@ class _RoadMap extends State<RoadMap> {
                                 '1A',
                                 '107',
                                 "Dean's Suit",
+                                '',
                                 tourGuidesWithAddedEmpties[0].name ?? "nothing "
                               ]),
                               buildRow([
                                 '1B',
                                 '115',
                                 "Material's Lab",
+                                '',
                                 masterTourGuideObjectList[1].name
                               ]),
                               buildRow([
                                 '1C',
                                 '117',
                                 "Concrete Lab",
+                                '',
                                 masterTourGuideObjectList[2].name
                               ]),
                               buildRow([
                                 '1D',
                                 '121',
                                 "Thermo Sciences Lab",
+                                '',
                                 tourGuidesWithAddedEmpties[3].name
                               ]),
                               buildRow([
                                 '1E',
                                 '118',
                                 "Machine Shop",
+                                '',
                                 tourGuidesWithAddedEmpties[4].name
                               ]),
                               buildRow([
                                 '1F',
                                 '',
                                 "Crown Innovation Ctr",
+                                '',
                                 tourGuidesWithAddedEmpties[5].name
                               ]),
                               buildRow([
                                 '1G',
                                 '102',
                                 "Student Lounge",
+                                '',
                                 tourGuidesWithAddedEmpties[6].name
                               ]),
                               buildRow([
                                 '2A',
                                 '207',
                                 "Computer Lounge",
+                                '',
                                 tourGuidesWithAddedEmpties[7].name
                               ]),
                               buildRow([
                                 '2B',
                                 '207A',
                                 "One-button studio",
+                                '',
                                 tourGuidesWithAddedEmpties[8].name
                               ]),
                               buildRow([
                                 '2C',
                                 '203-201',
                                 "Freshman Engineering Complex",
+                                '',
                                 tourGuidesWithAddedEmpties[9].name
                               ]),
                               buildRow([
                                 '2D',
                                 '200',
                                 "Maker Space",
+                                '',
                                 tourGuidesWithAddedEmpties[10].name
                               ]),
                               buildRow([
                                 '2E',
                                 '218',
                                 "Conference Room",
+                                '',
                                 tourGuidesWithAddedEmpties[11].name
                               ]),
                               buildRow([
                                 '2F',
                                 '206',
                                 "Student Lounge",
+                                '',
                                 tourGuidesWithAddedEmpties[12].name
                               ]),
                               buildRow([
                                 '3A',
                                 '',
                                 '"Unique Huddle room," 3rd floor, top of stairs',
+                                '',
                                 tourGuidesWithAddedEmpties[13].name
                               ]),
                               buildRow([
                                 '3B',
                                 '320',
                                 "Mechatronics demo in PLC lab",
+                                '',
                                 tourGuidesWithAddedEmpties[14].name
                               ]),
                               buildRow([
                                 '3C',
                                 '308',
                                 "Student Lounge",
+                                '',
                                 tourGuidesWithAddedEmpties[15].name
                               ]),
                               buildRow([
                                 '3D',
                                 '307',
                                 "Computer teaching lab",
+                                '',
                                 tourGuidesWithAddedEmpties[16].name
                               ]),
                               buildRow([
                                 '3E',
                                 '311',
                                 "Circuits lab",
+                                '',
                                 tourGuidesWithAddedEmpties[17].name
                               ]),
                               buildRow([
                                 '3F',
                                 '301',
                                 "Typical 40 person classroom with camera",
+                                '',
                                 tourGuidesWithAddedEmpties[18].name
                               ]),
                               buildRow([
                                 '3G',
                                 '323',
                                 'Typical "Pod style" classroom',
+                                '',
                                 tourGuidesWithAddedEmpties[19].name
                               ]),
 
