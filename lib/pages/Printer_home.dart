@@ -1,7 +1,7 @@
 
 
 // Printer_home.dart - Written by Alexander Brown, Jared Swartz, Jamir Nunley, Zach Krempasky, Mallory Clark (IOT Titans Capstone Group)
-// Last Update 3/5/2024
+// Last Update 3/26/2024
 // Uses Octoprint REST Api to communicate with server, can either be connected to via domain name or hardcoded IP address
 //
 // [DUE TO NATURE OF ONU NETWORK IP ADDRESS MUST BE HARDCODED - DOMAIN NAMES CANNOT BE GIVEN]
@@ -15,21 +15,33 @@
 // Basis for Operation: sends encoded JSON files to Octopi server to execute commands, current commands include;
 //          
 // Cancel Job : 'cancel' (WORKS)
-// Start Job : 'start' (Work in Progress) (most likely wont be used in final product because file select allows print start as well)
+// Start Job : 'start' (Work in Progress, used for debug) (most likely wont be used in final product because file select allows print start as well)
 // Select File: 'select' (will be used to select files and start prints, see documentation for details)
 // Pause Job : 'pause'  (See documentation for additonal parameters)
-// Resume Job : 
-
+// Resume Job : uses a variation of 'pause' command that include 'resume' as a secondary parameter
+//
+// Webcam Livestream (Runs constantly on page) : using the Webview Package we can observe webcam livestream by initializing the webpage of the 
+// webcamera's specific address ( Webcam Address = http://$serverIP/webcam/?action=stream )
+//
 // See "Job Operations" on Octoprint REST API Documentation for details on JSON File encoding
+
+//--------------------------------------------------------------------------------------------------------------------
+
+//-------------------------------------- Notes------------------------------------------------------------------------
+// In order to access the webcam livestream the following paramteter needed to be added to the file "AndroidManifest.xml" :
+
+//<application
+//        android:usesCleartextTraffic="true"
+//        ...
+
+// Still need to confirm functionallity on IOS Devices because they have a different manifest file
+// DO NOT REMOVE THIS BECAUSE THE CONNECTION WILL NOT WORK OTHERWISE
 //-------------------------------------------------------------------------------------------------------------------
 
 //------------------------------------------TO DO-------------------------------------------------------------------
-
-// Implement Monitering feature, should allow user to view printer's webcam via webserver, also need to add function
-// that fetches current job details to display
 //
 //Implement Function that fetches the printer's current status and displays it
-//i.e: Print Status + what is being printed (retrieve Job status from http request)
+//i.e: Print Status + what is being printed (retrieve Job status from http request) (Might be redundant because the user can see a webcam livestream)
 //
 //Add function that allows user to change server IP address and API Key if for any reason either of those needs to be changed (Maybe)
 //
@@ -42,7 +54,7 @@
 //--------------------------Files Currently on Server -------------------------------------------------------------
 //   Add the names of any files uploaded to the server, the name is what is passed into the select print function 
 //  "PolarBearCapstone.gcode" - 2D Model of Polar Bear
-//
+//  "PolarBear3D.gcode" - Low Poly 3D Polar Bear
 //
 //
 //
@@ -171,7 +183,6 @@ Future<http.Response> selectPrint(String filename) async {
   var response = await http.post(url, headers: headers, body: send);
 
   return response;
-
 }
 
 //Not used in final implementation, used for debugging
